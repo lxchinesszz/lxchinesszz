@@ -22,6 +22,7 @@ Here are some ideas to get you started:
 
 
 📝 记录一个非科班程序猿的成长之路。🚀
+
 Record the growth of a non-technical programmer.
 
 ## 关于我/About
