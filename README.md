@@ -27,7 +27,7 @@ Record the growth of a non-technical programmer.
 
 
 ## Other Languages I know
-<img src="https://img.shields.io/badge/-Java-F89820?style=flat&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/-Python-black?style=flat&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white"> <img src="https://img.shields.io/badge/-Spring-6DB33F?style=flat&logo=Spring&logoColor=white">
+<img src="https://img.shields.io/badge/-Java-F89820?style=flat&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/-Python-black?style=flat&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white"> <img src="https://img.shields.io/badge/-Spring-6DB33F?style=flat&logo=Spring&logoColor=white"> <img src="https://img.shields.io/badge/-Jenkins-D24939?logo=Jenkins&style=flat&logoColor=white"> <img src="https://img.shields.io/badge/-Docker-2496ED?logo=Docker&style=flat&logoColor=white">
 
 
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lxchinesszz&theme=dracula)](https://github.com/lxchinesszz/lxchinesszz/edit/master/README.md)
