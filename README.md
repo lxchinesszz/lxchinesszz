@@ -29,8 +29,6 @@ Record the growth of a non-technical programmer.
 ## Other Languages I know
 <img src="http://img.shields.io/badge/-Java-F89820?style=flat&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/-Python-black?style=flat&logo=python&logoColor=white"> 
 
----
-
 
 [![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lxchinesszz&theme=dracula)](https://github.com/lxchinesszz/lxchinesszz/edit/master/README.md)
 
