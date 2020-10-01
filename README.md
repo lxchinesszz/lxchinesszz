@@ -25,6 +25,14 @@ Here are some ideas to get you started:
 
 Record the growth of a non-technical programmer.
 
+
+## Other Languages I know
+<img src="http://img.shields.io/badge/-Java-F89820?style=flat&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/-C%20&%20C++-659ad2?style=flat&logo=c%2B%2B&logoColor=ffffff"> <img src="https://img.shields.io/badge/-Python-black?style=flat&logo=python&logoColor=white"> 
+
+---
+
+
+
 ## 关于我/About
 
 - Learning : Full-Stack Development ⚡️ | Open-Source 🔥
@@ -32,3 +40,7 @@ Record the growth of a non-technical programmer.
 - Languages: Java,Python,JavaScript,Lua
 - Hobbies: PUBG Mobile 📱, Coding💻
 - Email: lxchinesszz@163.com
+
+
+
+
