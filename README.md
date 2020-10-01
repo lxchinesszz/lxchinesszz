@@ -32,7 +32,7 @@ Record the growth of a non-technical programmer.
 ---
 
 
-[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lxchinesszz)](https://github.com/lxchinesszz/lxchinesszz/edit/master/README.md)
+[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=lxchinesszz&theme=dracula)](https://github.com/lxchinesszz/lxchinesszz/edit/master/README.md)
 
 ## 关于我/About
 
