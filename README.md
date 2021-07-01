@@ -25,6 +25,8 @@ Here are some ideas to get you started:
 
 Record the growth of a non-technical programmer.
 
+![](http://ascm-test.danchuangglobal.com/static/img/china.d441bc2a.png)
+
 
 ## Other Languages I know
 <img src="https://img.shields.io/badge/-Java-F89820?style=flat&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/-Python-black?style=flat&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/-JavaScript-yellow?style=flat&logo=JavaScript&logoColor=white"> <img src="https://img.shields.io/badge/-Spring-6DB33F?style=flat&logo=Spring&logoColor=white"> <img src="https://img.shields.io/badge/-Jenkins-D24939?logo=Jenkins&style=flat&logoColor=white"> <img src="https://img.shields.io/badge/-Docker-2496ED?logo=Docker&style=flat&logoColor=white">
