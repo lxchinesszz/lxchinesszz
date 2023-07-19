@@ -2,6 +2,7 @@
 <!-- just img -->
 <div align="center"><img width="100%" src="https://cdn.jsdelivr.net/gh/sun0225SUN/photos/images/202110311924844.png" /></div>
 
+
 ### 👋 Hi there,Welcome to my Github warehouse ! 
 
 <!--
@@ -56,6 +57,8 @@ Record the growth of a non-technical programmer.
 - Hobbies: PUBG Mobile 📱, Coding💻
 - Email: lxchinesszz@163.com
 
+
+<div align="center"><img width="100%" src="https://raw.githubusercontent.com/Simon-He95/Simon-He95/main/profile-snake-contrib/github-contribution-grid-snake.svg" /></div>
 
 
 
