@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "rootDir": "./",
+    "baseUrl": "./",
+    "target": "ES2020",
+    "module": "esnext",
+    /* 用于选择模块解析策略，有'node'和'classic'两种类型' */
+    "moduleResolution": "node",
+    "traceResolution": true,
+    "isolatedModules": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "strict": true,
+    "allowJs": true,
+    /* allowJs设置的值为true或false，用来指定是否允许编译js文件，默认是false，即不编译js文件 */
+    "checkJs": true,
+    /* checkJs的值为true或false，用来指定是否检查和报告js文件中的错误，默认是false */
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "es",
+    "auto-imports.d.ts",
+    "docs",
+    "docgen.config.js",
+    "web-vue"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "v-ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "types": "./web-vue/v-ui.d.ts",
+  "main": "./web-vue/v-ui/src/index.mjs",
+  "module": "./web-vue/v-ui/src/index.mjs",
+  "files": [
+    "web-vue"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@arco-design/web-vue": "^2.56.1",
+    "@types/gsap": "^3.0.0",
+    "animate.css": "^4.1.1",
+    "animejs": "^3.2.2",
+    "gsap": "^3.12.5",
+    "less": "^4.2.0",
+    "swapy": "^0.1.2",
+    "typed.js": "^2.1.0",
+    "vite-plugin-dts": "^4.0.3",
+    "vue": "^3.4.37",
+    "vue-docgen-cli": "^4.79.0",
+    "vue3-leaderline": "^1.2.11"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.2",
+    "typescript": "^5.4.2",
+    "vite": "^5.4.1",
+    "vue-tsc": "^2.0.29"
+  }
+}

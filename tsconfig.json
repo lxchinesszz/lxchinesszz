@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "jsx": "preserve",
+    "strict": false,
+    "target": "ES2020",
+    "suppressImplicitAnyIndexErrors": true,
+    "allowJs": true,
+    "module": "ESNext",
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@": [
+        "src"
+      ]
+    },
+    "include": [
+      "docs/*.ts",
+      "docs/**/*.ts",
+      "docs/**/*.vue",
+      "docs/**/*.d.ts"
+    ],
+    // 指定排除的文件
+    "exclude": [
+      "node_modules",
+      "web-vue/node_modules"
+    ],
+    "resolveJsonModule": true,
+    "types": [
+      "unplugin-vue-define-options/macros-global"
+    ]
+  }
+}
