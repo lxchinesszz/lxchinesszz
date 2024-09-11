@@ -111,7 +111,8 @@ dist
 
 # vuepress build output
 .vuepress/dist
-
+.vitepress/dist
+docs/.vitepress/cache
 # vuepress v2.x temp and cache directory
 .temp
 .cache
@@ -146,3 +147,5 @@ dist
 !/v-ui/node_modules/
 !/v-ui/web-vue/node_modules/
 !/v-ui/web-vue/
+!/docs/.vitepress/cache/
+!/docs/.vitepress/cache/
