@@ -199,6 +199,14 @@ console.log(process.env.npm_package_config_port) // 3000
 
 ## 文件 & 目录
 
+
+### type
+
+- "type": "commonjs"
+- "type": "module"
+  设置 type 字段为 "module" 后，你就可以在 .js 文件中使用 import 和 export 语句了
+
+
 ### main
 
 main 字段用来指定加载的入口文件，在 browser 和 Node 环境中都可以使用。如果我们将项目发布为 npm 包，那么当使用 require 导入 npm 包时，返回的就是 main 字段所列出的文件的 module.exports 属性。如果不指定该字段，默认是项目根目录下的 index.js。如果没找到，就会报错。

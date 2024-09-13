@@ -2,6 +2,9 @@ import { defineComponent, useCssVars, ref, onMounted, computed, openBlock, creat
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "VAnimate",
   props: {
+    /**
+     * 动画样式
+     */
     animate: {
       type: Object,
       default: {
@@ -13,8 +16,8 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   },
   setup(__props, { expose: __expose }) {
     useCssVars((_ctx) => ({
-      "7c67ec0a": animate.value,
-      "6d808cea": duration.value
+      "b89eb9cc": animate.value,
+      "e9e4370a": duration.value
     }));
     const props = __props;
     const boxRef = ref();

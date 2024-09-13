@@ -9,11 +9,12 @@
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
   },
-
+  "web-typs": "./web-types.json",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^22.5.4",
     "vitepress": "1.0.1",
     "vitepress-theme-demoblock": "3.0.7"
   }

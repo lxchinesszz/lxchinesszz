@@ -12,6 +12,7 @@ comment: false
 footer: true
 backtotop: true
 title: Guava-retry重试组件
+category: 'Guava'
 ---
 
 ## 一、简介

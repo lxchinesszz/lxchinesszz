@@ -12,6 +12,7 @@ comment: false
 footer: true
 backtotop: true
 title: Javassist
+category: '字节码增强'
 ---
 
 :::info Javassist

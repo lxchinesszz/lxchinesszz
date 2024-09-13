@@ -8,12 +8,11 @@
         {{ props.title }}
       </span>
     </div>
-    <h3 class="secondary">{{ props.secondary }} -- {{ name }}</h3>
+    <h3 class="secondary">{{ props.secondary }}</h3>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue';
 
   const props = defineProps({
     src: String,
@@ -22,7 +21,6 @@
     secondary: String,
   });
 
-  const name = ref('客户满意度');
 </script>
 
 <style scoped>

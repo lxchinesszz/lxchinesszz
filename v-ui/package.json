@@ -6,6 +6,7 @@
   "types": "./web-vue/v-ui.d.ts",
   "main": "./web-vue/v-ui/src/index.mjs",
   "module": "./web-vue/v-ui/src/index.mjs",
+  "web-types": "./web-types.json",
   "files": [
     "web-vue"
   ],
@@ -26,6 +27,7 @@
     "vite-plugin-dts": "^4.0.3",
     "vue": "^3.4.37",
     "vue-docgen-cli": "^4.79.0",
+    "vue-docgen-web-types": "^0.1.8",
     "vue3-leaderline": "^1.2.11"
   },
   "devDependencies": {

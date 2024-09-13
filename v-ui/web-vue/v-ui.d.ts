@@ -99,6 +99,9 @@ declare type ImagePosition = {
 declare type PositionType = 'left' | 'right';
 
 export declare const VAnimate: __VLS_WithTemplateSlots<DefineComponent<    {
+/**
+* 动画样式
+*/
 animate: {
 type: PropType<AnimateOption>;
 default: {
@@ -110,6 +113,9 @@ disabled: boolean;
 }, {
 replay: () => void;
 }, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+/**
+* 动画样式
+*/
 animate: {
 type: PropType<AnimateOption>;
 default: {

@@ -12,6 +12,7 @@ comment: false
 footer: true
 backtotop: true
 title: Guava-cache
+category: 'Guava'
 ---
 
 ![](https://img.springlearn.cn/blog/learn_1588264022000.png)

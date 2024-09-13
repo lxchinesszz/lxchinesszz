@@ -3,7 +3,7 @@ import Layout from './Layout.vue';
 import 'vitepress-theme-demoblock/dist/theme/styles/index.css';
 import type { EnhanceAppContext } from 'vitepress/dist/client';
 import { useComponents } from './useComponents';
-import './style.css'
+// import './style.css'
 
 export default {
   ...DefaultTheme,

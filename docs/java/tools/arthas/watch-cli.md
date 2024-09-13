@@ -12,6 +12,7 @@ comment: false
 footer: true
 backtotop: true
 title: monitor/watch/trace相关
+category: 'Arthas'
 ---
 
 ## 一、启动Arthas

@@ -12,7 +12,7 @@ comment: true
 footer: true
 backtotop: true
 title: dubbo适配Spring原理
-category: java
+category: Dubbo
 ---
 
 

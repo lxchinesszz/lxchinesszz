@@ -12,6 +12,7 @@ comment: false
 footer: true
 backtotop: true
 title: Arthas（阿尔萨斯） 能为你做什么
+category: 'Arthas'
 ---
 
 ![](https://img.springlearn.cn/blog/learn_1647177070000.png)

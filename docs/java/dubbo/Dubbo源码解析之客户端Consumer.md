@@ -12,7 +12,7 @@ comment: true
 footer: true
 backtotop: true
 title: dubbo 客户端调用流程
-category: java
+category: Dubbo
 ---
 
 

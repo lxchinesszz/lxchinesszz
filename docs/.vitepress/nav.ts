@@ -1,41 +1,40 @@
 export default [
   { text: '首页', link: '/' },
   {
-    text: '编程牛马',
+    text: '技术',
     items: [
-      { text: '前端', link: '/guide/' },
-      { text: '后端', link: '/java/' },
+      {
+        text: '前端',
+        items: [{ text: 'JavaScript', link: '/guide/' },
+          { text: 'VUI', link: '/components/' }],
+      },
+      {
+        text: '后端',
+        items: [{ text: 'Java', link: '/java/' },
+          { text: 'Python', link: '/python/' },
+          { text: 'Testing', link: '/test/' },
+        ],
+      },
       { text: '项目', link: '/project/' },
-      { text: '测试', link: '/test/' },
-      { text: 'AI', link: '/ai/' },
+      {
+        text: 'AI', link: '/ai/',
+      },
     ],
   },
-  { text: '供应链', link: '/scm/' },
-  { text: 'VUI', link: '/components/' },
   {
-    text: '设计与规范',
+    text: '生活',
     link: '/design/',
   },
+  { text: '供应链', link: '/scm/' },
   {
-    text: 'Library',
-    items: [
-      { text: 'animate', link: 'https://animate.style/' },
-      { text: 'leader-line', link: 'https://anseki.github.io/leader-line/' },
-      { text: 'canvas-confetti', link: 'https://github.com/catdad/canvas-confetti' },
-      { text: 'relation-graph', link: 'https://www.relation-graph.com/' },
-      { text: 'rough-notation', link: 'https://github.com/rough-stuff/rough-notation' },
-      { text: 'swapy', link: 'https://github.com/TahaSh/swapy' },
-      { text: 'loading.io', link: 'https://loading.io/' },
-    ],
-  }, {
     text: '志同道合',
     items: [
       {
         text: '陈随易', link: 'https://me.yicode.tech/',
       }
-      ,{
-      text: 'Vue3', link: 'https://vue-compiler.iamouyang.cn/',
-    }],
+      , {
+        text: 'Vue3', link: 'https://vue-compiler.iamouyang.cn/',
+      }],
   },
   {
     text: '知识库',
@@ -54,6 +53,18 @@ export default [
           // 关闭所有不必要的规则或可能与 Prettier 冲突的规则。
           { text: 'eslint-config-prettier', link: 'https://github.com/prettier/eslint-config-prettier' },
           { text: 'VitePress', link: 'https://vitepress.dev/zh/reference/frontmatter-config' },
+        ],
+      },
+      {
+        text: 'Library',
+        items: [
+          { text: 'animate', link: 'https://animate.style/' },
+          { text: 'leader-line', link: 'https://anseki.github.io/leader-line/' },
+          { text: 'canvas-confetti', link: 'https://github.com/catdad/canvas-confetti' },
+          { text: 'relation-graph', link: 'https://www.relation-graph.com/' },
+          { text: 'rough-notation', link: 'https://github.com/rough-stuff/rough-notation' },
+          { text: 'swapy', link: 'https://github.com/TahaSh/swapy' },
+          { text: 'loading.io', link: 'https://loading.io/' },
         ],
       },
     ],

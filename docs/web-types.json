@@ -1,0 +1,260 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
+  "framework": "vue",
+  "name": "v-ui",
+  "version": "0.0.0",
+  "contributions": {
+    "html": {
+      "description-markup": "markdown",
+      "types-syntax": "typescript",
+      "tags": [
+        {
+          "name": "v-animate",
+          "description": "",
+          "attributes": [
+            {
+              "name": "animate",
+              "description": "动画样式",
+              "value": {
+                "kind": "expression",
+                "type": "AnimateOption"
+              },
+              "default": "{\n  type: 'fadeIn',\n  duration: 1,\n  disabled: false,\n}"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/animate/VAnimate.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "VAroundBanner",
+          "description": "",
+          "attributes": [
+            {
+              "name": "line",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "template",
+              "value": {
+                "kind": "expression",
+                "type": "AroundBannerType[]"
+              },
+              "default": "[\n  {\n    imagePosition: {\n      image: {\n        src: 'https://ritheme.com/wp-content/themes/ritheme-2023/assets/img/screen-1-1000x800.jpg',\n      },\n      position: 'left',\n      animate: {\n        type: 'fadeInUp',\n        duration: 1,\n        disable: false,\n      },\n    },\n    title: '灵活轻量原生态的首页模块化配置',\n    animate: {\n      type: 'fadeInUp',\n      duration: 2,\n      disable: false,\n    },\n    secondary:\n      '现代化的前台页面，易于管理拖拽搭配的WP原生小工具模块化首页可拖拽设置。',\n    textItems: [\n      {\n        text: '非常适合虚拟资源商城',\n      },\n      {\n        text: '所有功能界面自带，无需依赖插件',\n      },\n    ],\n  },\n  {\n    imagePosition: {\n      image: {\n        src: 'https://ritheme.com/wp-content/themes/ritheme-2023/assets/img/screen-2-1000x800.jpg',\n      },\n      position: 'right',\n      animate: {\n        type: 'fadeInUp',\n        duration: 1,\n        disable: false,\n      },\n    },\n    animate: {\n      type: 'fadeInUp',\n      duration: 2,\n      disable: false,\n    },\n    title: '灵活轻量原生态的首页模块化配置',\n    secondary:\n      '现代化的前台页面，易于管理拖拽搭配的WP原生小工具模块化首页可拖拽设置。',\n    textItems: [\n      {\n        text: '非常适合虚拟资源商城',\n      },\n      {\n        text: '所有功能界面自带，无需依赖插件',\n      },\n    ],\n  },\n  {\n    imagePosition: {\n      image: {\n        src: 'https://ritheme.com/wp-content/themes/ritheme-2023/assets/img/screen-1-1000x800.jpg',\n      },\n      position: 'left',\n      animate: {\n        type: 'fadeInUp',\n        duration: 1,\n        disable: false,\n      },\n    },\n    title: '灵活轻量原生态的首页模块化配置',\n    animate: {\n      type: 'fadeInUp',\n      duration: 2,\n      disable: false,\n    },\n    secondary:\n      '现代化的前台页面，易于管理拖拽搭配的WP原生小工具模块化首页可拖拽设置。',\n    textItems: [\n      {\n        text: '非常适合虚拟资源商城',\n      },\n      {\n        text: '所有功能界面自带，无需依赖插件',\n      },\n    ],\n  },\n]"
+            }
+          ],
+          "source": {
+            "module": "./src/components/card/VAroundBanner.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "VCircle",
+          "description": "",
+          "attributes": [
+            {
+              "name": "value",
+              "required": true,
+              "value": {
+                "kind": "expression",
+                "type": "Array<TableTag>"
+              }
+            },
+            {
+              "name": "tagKey",
+              "value": {
+                "kind": "expression",
+                "type": "string|number"
+              }
+            }
+          ],
+          "source": {
+            "module": "./src/components/icon/VCircle.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "VIcon",
+          "description": "",
+          "attributes": [
+            {
+              "name": "icon",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "source": {
+            "module": "./src/components/icon/VIcon.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "VImage",
+          "description": "",
+          "attributes": [
+            {
+              "name": "src",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "success"
+            },
+            {
+              "name": "error"
+            }
+          ],
+          "source": {
+            "module": "./src/components/image/VImage.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "VImageCard",
+          "description": "",
+          "attributes": [
+            {
+              "name": "template",
+              "value": {
+                "kind": "expression",
+                "type": "CardProps"
+              },
+              "default": "{\n  title: '${title}',\n  image: {\n    src: 'https://ritheme.com/wp-content/uploads/2023/06/theme-ripro-v5-300x200.jpg',\n  },\n  tags: [\n    {\n      tag: 'V8.1',\n      color: '#86909c',\n    },\n    {\n      tag: '强大首选',\n      color: '#d16c74',\n    },\n  ],\n  description: {\n    rows: 2,\n    content:\n      'A design is a plan or specification for theconstruction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or\\n          process. The verb to design expresses the process of developing a design. The verb to design expresses the\\n          process of developing a design.A design is a plan or specification for the construction of an object or system\\n          or for the implementation of an activity or process, or the result of that plan or specification in the form\\n          of a prototype, product or process. The verb to design expresses the process of developing a design. The verb\\n          to design expresses the process of developing a design.',\n  },\n  footButton: {\n    leftButton: {\n      text: '主题介绍',\n      type: '',\n      status: 'danger',\n    },\n    rightButton: {\n      text: '正版演示',\n      type: 'primary',\n      status: 'normal',\n    },\n  },\n}"
+            }
+          ],
+          "slots": [
+            {
+              "name": "footer"
+            }
+          ],
+          "source": {
+            "module": "./src/components/card/VImageCard.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "VTag",
+          "description": "",
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./src/components/icon/VTag.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "VTextCenter",
+          "description": "",
+          "attributes": [
+            {
+              "name": "align",
+              "value": {
+                "kind": "expression",
+                "type": "AlignType"
+              },
+              "default": "'center'"
+            },
+            {
+              "name": "title",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "secondary",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "tag",
+              "value": {
+                "kind": "expression",
+                "type": "CardTag"
+              }
+            }
+          ],
+          "source": {
+            "module": "./src/components/text/VTextCenter.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "VTextStatistic",
+          "description": "",
+          "attributes": [
+            {
+              "name": "src",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "title",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "color",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "secondary",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "source": {
+            "module": "./src/components/text/VTextStatistic.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "VTypedText",
+          "description": "",
+          "attributes": [
+            {
+              "name": "text",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "source": {
+            "module": "./src/components/animate/VTypedText.vue",
+            "symbol": "default"
+          }
+        }
+      ]
+    }
+  }
+}

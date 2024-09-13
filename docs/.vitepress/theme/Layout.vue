@@ -4,8 +4,8 @@
   <Layout>
     <template #aside-outline-before>
       <div v-if="frontmatter['sideImage']!==false">
-        <img
-          :src="frontmatter['sideImage'] ?? 'https://img.springlearn.cn/learn_c3d5074d94563b8297f81633f171d230.jpeg'" />
+        <img :src="frontmatter['sideImage'] ?? 'https://img.springlearn.cn/learn_c3d5074d94563b8297f81633f171d230.jpeg'"
+             alt="sideAds" />
       </div>
     </template>
   </Layout>

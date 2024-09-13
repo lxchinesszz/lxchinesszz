@@ -9,7 +9,8 @@ import { Dirent } from 'fs';
 type Sidebar = {
   text?: string;
   collapsed?: boolean
-  items: SidebarItem[]
+  link?: string;
+  items?: SidebarItem[]
 }
 
 type SidebarItem = {
@@ -78,6 +79,10 @@ function sortSidebarItems(sidebar: Sidebar): Sidebar {
   return sidebar;
 }
 
+function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 export function buildSidebar(dir: string) {
   // console.log(`dir:${dir}`);
   let number = dir.lastIndexOf('/');
@@ -87,22 +92,25 @@ export function buildSidebar(dir: string) {
   // console.log(`loadPathFile:${parentPath}`);
   let files = listAllFile(dir);
   const map: Map<string, SidebarItem[]> = new Map();
+  const sidebarCategoryMap: Map<string, string> = new Map();
   const result: Record<string, Sidebar[]> = {};
   const sidebar: Sidebar = { items: [] };
   files.forEach(file => {
     const filePath = `${file.parentPath}/${file.name}`;
     const data = matter(readMarkdown(filePath)).data;
-    let sidebarKeyword = data['category'] ?? '知识体系';
-    if (sidebarKeyword === true) {
-      sidebarKeyword = '知识体系';
-    }
+    let dirName = capitalizeFirstLetter(file.parentPath.substring(file.parentPath.lastIndexOf('/') + 1, file.parentPath.length));
+    let sidebarKeyword = data['category'] ? `${file.parentPath}-${data['category']}` : `${file.parentPath}-${dirName}`;
     let title = data['title'];
     sidebar.text = sidebarKeyword;
     if (sidebarKeyword) {
       const prefix = file.parentPath.replace(parentPath, '');
+      if (!file.name.endsWith('.md')) {
+        return;
+      }
       const link = `${prefix}/${file.name.replace('.md', '')}`;
-      // console.log(link);
-      if (link.endsWith('index') || link.endsWith('README') || link.endsWith('readme')) {
+      let isIndex = link.endsWith('index') || link.endsWith('README') || link.endsWith('readme');
+      if (isIndex) {
+        sidebarCategoryMap.set(file.parentPath, link);
         return;
       }
       const sidebarItem = {
@@ -117,10 +125,17 @@ export function buildSidebar(dir: string) {
     }
   });
   const sidebarByKeywords: Sidebar[] = [];
+  // console.log(sidebarCategoryMap);
   for (let mapElement of map) {
+    let categoryFullPath = mapElement[0];
+    let categoryParentName = categoryFullPath.split('-')[0];
+    let categoryName = categoryFullPath.split('-')[1];
+    // console.log(`categoryFullPath===>${categoryParentName}`);
+    let categoryLink = sidebarCategoryMap.get(categoryParentName);
     sidebarByKeywords.push(sortSidebarItems({
-        text: mapElement[0],
+        text: categoryName,
         collapsed: false,
+        link: categoryLink,
         items: mapElement[1],
       }),
     );
@@ -136,7 +151,7 @@ export function buildSidebars(dirs: string[]) {
     let sidebar1 = buildSidebar(dirs[i]);
     sidebars = { ...sidebars, ...sidebar1 };
   }
-  console.log(sidebars);
+  // console.log(sidebars);
   return sidebars;
 }
 

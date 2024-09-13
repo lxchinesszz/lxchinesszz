@@ -12,6 +12,7 @@ comment: false
 footer: true
 backtotop: true
 title: 基础教程
+category: 'Arthas'
 ---
 
 ## 一、启动Arthas

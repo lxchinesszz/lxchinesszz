@@ -12,7 +12,7 @@ comment: true
 footer: true
 backtotop: true
 title: dubbo 服务端注册流程
-category: java
+category: Dubbo
 ---
 
 ![](https://img.springlearn.cn/blog/aa3147663675b9b5692915030cf264b9.png)
