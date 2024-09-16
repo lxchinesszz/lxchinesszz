@@ -8,6 +8,8 @@ import VImageCard from './components/card/VImageCard.vue';
 import 'animate.css';
 import ArcoVue from '@arco-design/web-vue';
 import '@arco-design/web-vue/dist/arco.css';
+import VTypedText from './components/animate/VTypedText.vue';
+
 export * from '@/components/animate/types.ts';
 
 function installComponent(app: any, name: string, component: any) {
@@ -24,6 +26,7 @@ const VUI = {
     installComponent(app, 'v-text-center', VTextCenter);
     installComponent(app, 'v-text-statistic', VTextStatistic);
     installComponent(app, 'v-image-card', VImageCard);
+    installComponent(app, 'v-typed-text', VTypedText);
     app.use(ArcoVue);
   },
 };

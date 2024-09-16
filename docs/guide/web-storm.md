@@ -1,5 +1,5 @@
 ---
-title: WebStorm 常用插件
+title: web-types
 editLink: true
 navbar: true
 category: 'Code Editor'

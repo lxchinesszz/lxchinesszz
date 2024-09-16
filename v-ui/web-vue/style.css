@@ -51,21 +51,21 @@
     align-items: center;
 }
 
-.box[data-v-ab663aa0] {
+.box[data-v-405c3b31] {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.h1[data-v-ab663aa0] {
+.h1[data-v-405c3b31] {
     font-size: 2.34375rem;
     font-weight: 500;
     line-height: 1.2;
 }
-.secondary[data-v-ab663aa0] {
+.secondary[data-v-405c3b31] {
     color: var(--color-text-3);
 }
-.home-number-icon[data-v-ab663aa0] {
+.home-number-icon[data-v-405c3b31] {
     height: 50px;
     vertical-align: middle;
     overflow: hidden;

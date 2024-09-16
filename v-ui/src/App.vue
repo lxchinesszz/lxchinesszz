@@ -1,34 +1,3 @@
-<script setup lang="ts">
-  import HelloWorld from '@/components/HelloWorld.vue';
-  import VAnimate from '@/components/animate/VAnimate.vue';
-  import VTypedText from './components/animate/VTypedText.vue';
-  import { createSwapy } from 'swapy';
-  import gsap from 'gsap';
-  import VIcon from './components/icon/VIcon.vue';
-  import { onMounted, ref } from 'vue';
-  import VImage from './components/image/VImage.vue';
-  import VImageCard from './components/card/VImageCard.vue';
-  import VAroundBanner from './components/card/VAroundBanner.vue';
-
-  const animateRef = ref();
-
-  onMounted(() => {
-    // gsap.to('.container', {
-    //   scale: 0.9,
-    //   yoyo: true,
-    //   repeat: -1,
-    //
-    //   duration: 2, // 动画持续时间为1秒
-    //   ease: 'power2.out',
-    // });
-    let container = document.querySelector('.container');
-    const swapy = createSwapy(container, {
-      animation: 'spring',
-    });
-    swapy.enable(true);
-  });
-</script>
-
 <template>
   <!--  <div class="container">-->
   <!--    <div>-->
@@ -61,9 +30,44 @@
   <!--      </div>-->
   <!--    </div>-->
   <!--  </div>-->
-  <VTypedText text="你是真的牛逼啊" />
-  <v-around-banner style="width: 100vw" line />
+  <!--  <v-typed-text text="你是真的牛逼啊,就你最牛逼" />-->
+  <!--  <VTypedText text="你是真的牛逼啊" />-->
+  <!--  <v-around-banner style="width: 100vw" line />-->
+  <div style="display: flex;justify-content: center;align-items: center">
+    <!--    <GsapGrid />-->
+    <!--    <GsapSplitText />-->
+    <!--    <AnimeGrid />-->
+    <AnimeText />
+  </div>
 </template>
+
+<script setup lang="ts">
+  import VTypedText from './components/animate/VTypedText.vue';
+  import { onMounted, ref } from 'vue';
+  import GsapGrid from './components/gsap/GsapGrid.vue';
+  import GsapSplitText from './components/gsap/GsapSplitText.vue';
+  import AnimeGrid from './components/gsap/AnimeGrid.vue';
+  import AnimeText from './components/gsap/AnimeText.vue';
+
+  const animateRef = ref();
+
+  onMounted(() => {
+    // gsap.to('.container', {
+    //   scale: 0.9,
+    //   yoyo: true,
+    //   repeat: -1,
+    //
+    //   duration: 2, // 动画持续时间为1秒
+    //   ease: 'power2.out',
+    // });
+    // let container = document.querySelector('.container');
+    // const swapy = createSwapy(container, {
+    //   animation: 'spring',
+    // });
+    // swapy.enable(true);
+  });
+</script>
+
 
 <style scoped>
   .logo {

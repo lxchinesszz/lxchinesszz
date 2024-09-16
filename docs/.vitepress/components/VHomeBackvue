@@ -1,0 +1,83 @@
+<template>
+
+    <div id="container">
+      <div v-for="item in 100" class="item"
+           :style="{backgroundImage: 'linear-gradient(180deg, '+itemBg+' 8%, '+itemBg2+' 100%)'}" :key="item">
+      </div>
+    </div>
+
+</template>
+
+<script setup lang="ts">
+  import { onMounted, ref, watchEffect } from 'vue';
+  import anime from 'animejs';
+  import { useData } from 'vitepress';
+
+  const { isDark } = useData();
+
+
+  const itemBg = ref(isDark.value ? 'white' : 'black');
+
+  const itemBg2 = ref(isDark.value ? '#D3CDC6' : '#656564');
+
+  const grid = [10, 10];
+
+  watchEffect(() => {
+    if (isDark.value) {
+      itemBg.value = 'white';
+      itemBg2.value = '#D3CDC6';
+    } else {
+      itemBg.value = 'black';
+      itemBg2.value = '#656564';
+    }
+  });
+
+  onMounted(() => {
+
+    let tl = anime.timeline({
+      targets: '.item',
+      loop: true,
+      direction: 'alternate',
+    });
+    tl.add({
+      scale: [
+        { value: 1, easing: 'easeOutSine', duration: 500 },
+        { value: 2, easing: 'easeInOutQuad', duration: 500 },
+      ],
+      delay: anime.stagger(200, { grid, from: 'first' }),
+      easing: 'linear',
+    });
+
+    tl.add({
+      scale: [
+        { value: 2, easing: 'easeInOutQuad', duration: 500 },
+        { value: 1, easing: 'easeOutSine', duration: 500 },
+      ],
+      delay: anime.stagger(200, { grid, from: 'last' }),
+      easing: 'linear',
+    });
+
+  });
+
+</script>
+
+<style scoped>
+
+  #container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-gap: 5px;
+    padding: 5rem;
+  }
+
+  .item {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: transparent;
+    background-image: linear-gradient(180deg, #FFFFFF 8%, #D3CDC6 100%);
+  }
+
+</style>

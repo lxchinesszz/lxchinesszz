@@ -1,4 +1,5 @@
 import { ComponentOptionsMixin } from 'vue';
+import { ComponentProvideOptions } from 'vue';
 import { DefineComponent } from 'vue';
 import { ExtractPropTypes } from 'vue';
 import { PropType } from 'vue';
@@ -98,7 +99,7 @@ declare type ImagePosition = {
 
 declare type PositionType = 'left' | 'right';
 
-export declare const VAnimate: __VLS_WithTemplateSlots<DefineComponent<    {
+export declare const VAnimate: __VLS_WithTemplateSlots<DefineComponent<ExtractPropTypes<    {
 /**
 * 动画样式
 */
@@ -110,9 +111,9 @@ duration: number;
 disabled: boolean;
 };
 };
-}, {
+}>, {
 replay: () => void;
-}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 /**
 * 动画样式
 */
@@ -124,13 +125,13 @@ duration: number;
 disabled: boolean;
 };
 };
-}>>, {
+}>> & Readonly<{}>, {
 animate: AnimateOption;
-}, {}>, {
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 
-export declare const VAroundBanner: DefineComponent<    {
+export declare const VAroundBanner: DefineComponent<ExtractPropTypes<    {
 line: BooleanConstructor;
 template: {
 type: PropType<AroundBannerType[]>;
@@ -158,7 +159,7 @@ text: string;
 }[];
 }[];
 };
-}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 line: BooleanConstructor;
 template: {
 type: PropType<AroundBannerType[]>;
@@ -186,30 +187,30 @@ text: string;
 }[];
 }[];
 };
-}>>, {
+}>> & Readonly<{}>, {
 template: AroundBannerType[];
 line: boolean;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-export declare const VIcon: DefineComponent<    {
+export declare const VIcon: DefineComponent<ExtractPropTypes<    {
 icon: StringConstructor;
-}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 icon: StringConstructor;
-}>>, {}, {}>;
+}>> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-export declare const VImage: DefineComponent<    {
+export declare const VImage: DefineComponent<ExtractPropTypes<    {
 src: StringConstructor;
-}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
-success: (...args: any[]) => void;
+}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
 error: (...args: any[]) => void;
+success: (...args: any[]) => void;
 }, string, PublicProps, Readonly<ExtractPropTypes<    {
 src: StringConstructor;
-}>> & {
+}>> & Readonly<{
 onError?: ((...args: any[]) => any) | undefined;
 onSuccess?: ((...args: any[]) => any) | undefined;
-}, {}, {}>;
+}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-export declare const VImageCard: __VLS_WithTemplateSlots_2<DefineComponent<    {
+export declare const VImageCard: __VLS_WithTemplateSlots_2<DefineComponent<ExtractPropTypes<    {
 template: {
 type: PropType<CardProps>;
 default: {
@@ -239,7 +240,7 @@ status: string;
 };
 };
 };
-}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 template: {
 type: PropType<CardProps>;
 default: {
@@ -269,13 +270,13 @@ status: string;
 };
 };
 };
-}>>, {
+}>> & Readonly<{}>, {
 template: CardProps;
-}, {}>, {
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>, {
     footer?(_: {}): any;
 }>;
 
-export declare const VTextCenter: DefineComponent<    {
+export declare const VTextCenter: DefineComponent<ExtractPropTypes<    {
 align: {
 type: PropType<AlignType>;
 default: string;
@@ -283,7 +284,7 @@ default: string;
 title: StringConstructor;
 secondary: StringConstructor;
 tag: PropType<CardTag>;
-}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 align: {
 type: PropType<AlignType>;
 default: string;
@@ -291,21 +292,21 @@ default: string;
 title: StringConstructor;
 secondary: StringConstructor;
 tag: PropType<CardTag>;
-}>>, {
+}>> & Readonly<{}>, {
 align: AlignType;
-}, {}>;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-export declare const VTextStatistic: DefineComponent<    {
+export declare const VTextStatistic: DefineComponent<ExtractPropTypes<    {
 src: StringConstructor;
 title: StringConstructor;
 color: StringConstructor;
 secondary: StringConstructor;
-}, {}, unknown, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
+}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, PublicProps, Readonly<ExtractPropTypes<    {
 src: StringConstructor;
 title: StringConstructor;
 color: StringConstructor;
 secondary: StringConstructor;
-}>>, {}, {}>;
+}>> & Readonly<{}>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 declare const VUI: {
     install(app: any): void;

@@ -23,6 +23,10 @@ export default defineConfig({
       type: 'image/png',
       href: 'https://img.springlearn.cn/learn_d98f09cdad8fa38168ec59c15a508490.ico',
     }],
+    ['script', {
+      src: 'https://cdn.bootcdn.net/ajax/libs/animejs/3.2.2/anime.min.js',
+    },
+    ],
   ],
   markdown: {
     lineNumbers: true,

@@ -1,4 +1,4 @@
-import { defineComponent, ref, openBlock, createElementBlock, createElementVNode, normalizeStyle, toDisplayString } from "vue";
+import { defineComponent, openBlock, createElementBlock, createElementVNode, normalizeStyle, toDisplayString } from "vue";
 const _hoisted_1 = { class: "box" };
 const _hoisted_2 = {
   class: "icon",
@@ -17,7 +17,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   },
   setup(__props) {
     const props = __props;
-    const name = ref("客户满意度");
     return (_ctx, _cache) => {
       return openBlock(), createElementBlock("div", _hoisted_1, [
         createElementVNode("div", _hoisted_2, [
@@ -32,7 +31,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             style: normalizeStyle({ color: props.color })
           }, toDisplayString(props.title), 5)
         ]),
-        createElementVNode("h3", _hoisted_5, toDisplayString(props.secondary) + " -- " + toDisplayString(name.value), 1)
+        createElementVNode("h3", _hoisted_5, toDisplayString(props.secondary), 1)
       ]);
     };
   }

@@ -13,13 +13,12 @@
   });
 
   const startTyped = () => {
-
     let text = props.text;
     if (text) {
-      const textSplit: string[] = text.split('');
+      const textSplit: string[] = text.split(',');
       if (textSplit) {
         const typed = new Typed('#container', {
-          strings: [text],
+          strings: textSplit,
           typeSpeed: 100,
           loop: true,
           startDelay: 100,

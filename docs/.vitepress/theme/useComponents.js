@@ -2,18 +2,21 @@
 import Demo from 'vitepress-theme-demoblock/dist/client/components/Demo.vue';
 import DemoBlock from 'vitepress-theme-demoblock/dist/client/components/DemoBlock.vue';
 import { defineAsyncComponent } from 'vue';
-// import { Vue3Lottie } from 'vue3-lottie';
 import VHome from '../components/VHome.vue';
-// import VUI from 'v-ui';
-// import 'v-ui/web-vue/style.css';
+import 'v-ui/web-vue/style.css';
 
 const modules = import.meta.glob('../components/*.vue');
 
 export function useComponents(app) {
-  // app.use(VUI);
+  app.mixin({
+    async mounted() {
+      import('v-ui').then((m) => {
+        app.use(m.default);
+      });
+    },
+  });
   app.component('Demo', Demo);
   app.component('DemoBlock', DemoBlock);
-  // app.component('Vue3Lottie', Vue3Lottie);
   app.component('XHome', VHome);
   for (const path in modules) {
     modules[path]().then((mod) => {

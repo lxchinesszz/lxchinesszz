@@ -1,1 +1,0 @@
-import{_ as e,o as a,c as s,t as c}from"./framework.swcE7GHT.js";const o={name:"Text",props:{text:{type:String,default:"程序猿"}}},n={class:"RedText"};function r(_,p,t,d,i,f){return a(),s("div",n,c(t.text),1)}const x=e(o,[["render",r],["__scopeId","data-v-cc4a558a"]]);export{x as default};
