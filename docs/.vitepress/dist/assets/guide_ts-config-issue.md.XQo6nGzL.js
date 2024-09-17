@@ -1,0 +1,99 @@
+import{_ as n,c as a,aa as p,o as e}from"./chunks/framework.bT2BobGK.js";const m=JSON.parse('{"title":"typescript配置说明","description":"","frontmatter":{"title":"typescript配置说明","editLink":true,"navbar":true},"headers":[],"relativePath":"guide/ts-config-issue.md","filePath":"guide/ts-config-issue.md"}'),l={name:"guide/ts-config-issue.md"};function i(r,s,t,u,c,o){return e(),a("div",null,s[0]||(s[0]=[p(`<h1 id="typescript配置说明" tabindex="-1">typescript配置说明 <a class="header-anchor" href="#typescript配置说明" aria-label="Permalink to &quot;typescript配置说明&quot;">​</a></h1><h2 id="无法找到-dirname" tabindex="-1">无法找到__dirname <a class="header-anchor" href="#无法找到-dirname" aria-label="Permalink to &quot;无法找到\\_\\_dirname&quot;">​</a></h2><p>__dirname 是commonjs规范的内置变量。如果使用了esm 是不会自动注入这个变量的。 解决办法。</p><ul><li>&quot;module&quot;: &quot;CommonJS&quot;</li></ul><div class="language- vp-adaptive-theme line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span>{</span></span>
+<span class="line"><span>  &quot;compilerOptions&quot;: {</span></span>
+<span class="line"><span>    &quot;composite&quot;: true,</span></span>
+<span class="line"><span>    &quot;tsBuildInfoFile&quot;: &quot;./node_modules/.tmp/tsconfig.node.tsbuildinfo&quot;,</span></span>
+<span class="line"><span>    &quot;skipLibCheck&quot;: true,</span></span>
+<span class="line"><span>    &quot;target&quot;: &quot;ES2020&quot;,</span></span>
+<span class="line"><span>    &quot;module&quot;: &quot;CommonJS&quot;,</span></span>
+<span class="line"><span>    &quot;moduleResolution&quot;: &quot;node&quot;,</span></span>
+<span class="line"><span>    &quot;allowSyntheticDefaultImports&quot;: true,</span></span>
+<span class="line"><span>    &quot;strict&quot;: true,</span></span>
+<span class="line"><span>    &quot;noEmit&quot;: true,</span></span>
+<span class="line"><span>    &quot;paths&quot;: {</span></span>
+<span class="line"><span>      &quot;@/*&quot;: [</span></span>
+<span class="line"><span>        &quot;src/*&quot;</span></span>
+<span class="line"><span>      ]</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  },</span></span>
+<span class="line"><span>  &quot;include&quot;: [&quot;vite.config.ts&quot;]</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>或者</p><div class="language- vp-adaptive-theme line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span>// 方法一</span></span>
+<span class="line"><span>import { URL, fileURLToPath } from &quot;node:url&quot;;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// 获取__filename</span></span>
+<span class="line"><span>function getCurrnetFile () {</span></span>
+<span class="line"><span>    return fileURLToPath(import.meta.url);</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>// 获取__dirname</span></span>
+<span class="line"><span>function getCurrnetDir () {</span></span>
+<span class="line"><span>    const url = new URL(&quot;.&quot;, import.meta.url);</span></span>
+<span class="line"><span>    return fileURLToPath(url);</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>或者</p><div class="language- vp-adaptive-theme line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span>// 方法二</span></span>
+<span class="line"><span>import { dirname } from &quot;node:path&quot;;</span></span>
+<span class="line"><span>import { fileURLToPath } from &quot;node:url&quot;;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// 获取__filename</span></span>
+<span class="line"><span>function getCurrnetFile () {</span></span>
+<span class="line"><span>    return fileURLToPath(import.meta.url);</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>// 获取__dirname</span></span>
+<span class="line"><span>function getCurrnetDir () {</span></span>
+<span class="line"><span>    const __filename = fileURLToPath(import.meta.url);</span></span>
+<span class="line"><span>    const __dirname = dirname(__filename);</span></span>
+<span class="line"><span>    return __dirname;</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>解决了这个问题 ts编译不会报错，但是页面加载还是会报错。</p><div class="language- vp-adaptive-theme line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span>import {defineConfig} from &#39;vite&#39;</span></span>
+<span class="line"><span>import vue from &#39;@vitejs/plugin-vue&#39;</span></span>
+<span class="line"><span>import {resolve} from &#39;path&#39;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// https://vitejs.dev/config/</span></span>
+<span class="line"><span>export default defineConfig({</span></span>
+<span class="line"><span>    plugins: [vue()],</span></span>
+<span class="line"><span>    resolve: {</span></span>
+<span class="line"><span>        alias: {</span></span>
+<span class="line"><span>            &quot;@&quot;: resolve(__dirname, &#39;src&#39;), // 路径别名</span></span>
+<span class="line"><span>        },</span></span>
+<span class="line"><span>        extensions: [&#39;.js&#39;, &#39;.json&#39;, &#39;.ts&#39;] // 使用路径别名时想要省略的后缀名，可以自己 增减</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>})</span></span></code></pre><div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h2 id="配置参数" tabindex="-1">配置参数 <a class="header-anchor" href="#配置参数" aria-label="Permalink to &quot;配置参数&quot;">​</a></h2><div class="language- vp-adaptive-theme line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span>{</span></span>
+<span class="line"><span>  // 用来配置编译选项</span></span>
+<span class="line"><span>  &quot;compilerOptions&quot;: {</span></span>
+<span class="line"><span>    &quot;target&quot;: &quot;esnext&quot;,// 生成js 的版本，下一版本</span></span>
+<span class="line"><span>    &quot;module&quot;: &quot;esnext&quot;, // 生成的module的形式，esm，cmd，amd啥的</span></span>
+<span class="line"><span>    &quot;strict&quot;: false, // 是否严格模式</span></span>
+<span class="line"><span>    &quot;jsx&quot;: &quot;preserve&quot;, // jsx用于的开发环境，preserve/react/RN</span></span>
+<span class="line"><span>    &quot;importHelpers&quot;: true, // 指定是否引入tslib里的复制工具函数</span></span>
+<span class="line"><span>    &quot;moduleResolution&quot;: &quot;node&quot;, // 用于选择模块解析策略 node/classic</span></span>
+<span class="line"><span>    &quot;experimentalDecorators&quot;: true, // 用于指定是否启用实验性的装饰器特性</span></span>
+<span class="line"><span>    &quot;esModuleInterop&quot;: true, // 通过导入内容创建命名空间，实现CommonJS和ES模块之间的互操作性</span></span>
+<span class="line"><span>    &quot;allowSyntheticDefaultImports&quot;: true, // 用于允许从没有默认导出的模块中默认导入</span></span>
+<span class="line"><span>    &quot;sourceMap&quot;: true, // 编译时是否生成.map文件</span></span>
+<span class="line"><span>    &quot;baseUrl&quot;: &quot;.&quot;,// 用于设置解析非相对模块名称的基本目录，相对模块不会受到baseUrl的影响</span></span>
+<span class="line"><span>    //用于指定需要包含的模块，只有在这里列出的模块的声明文件才会被加载</span></span>
+<span class="line"><span>    &quot;types&quot;: [</span></span>
+<span class="line"><span>      &quot;webpack-env&quot;</span></span>
+<span class="line"><span>    ],</span></span>
+<span class="line"><span>    // 用于设置模块名到基于baseUrl的路径映射</span></span>
+<span class="line"><span>    &quot;paths&quot;: {</span></span>
+<span class="line"><span>      &quot;@/*&quot;: [</span></span>
+<span class="line"><span>        &quot;src/*&quot;</span></span>
+<span class="line"><span>      ]</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span>    // 指定要包含在编译中的库文件</span></span>
+<span class="line"><span>    &quot;lib&quot;: [</span></span>
+<span class="line"><span>      &quot;esnext&quot;,</span></span>
+<span class="line"><span>      &quot;dom&quot;,</span></span>
+<span class="line"><span>      &quot;dom.iterable&quot;,</span></span>
+<span class="line"><span>      &quot;scripthost&quot;</span></span>
+<span class="line"><span>    ]</span></span>
+<span class="line"><span>  },</span></span>
+<span class="line"><span>  // 指定编译的文件，没有include和exclude时候用</span></span>
+<span class="line"><span>  &quot;file&quot;: [],</span></span>
+<span class="line"><span>  // 指定待编译的文件</span></span>
+<span class="line"><span>  &quot;include&quot;: [</span></span>
+<span class="line"><span>  // ** : 任意目录 ， * : 任意文件</span></span>
+<span class="line"><span>    &quot;src/**/*.ts&quot;,</span></span>
+<span class="line"><span>  ],</span></span>
+<span class="line"><span>  // 指定排除的文件</span></span>
+<span class="line"><span>  &quot;exclude&quot;: [</span></span>
+<span class="line"><span>    &quot;node_modules&quot;</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br></div></div>`,13)]))}const d=n(l,[["render",i]]);export{m as __pageData,d as default};
