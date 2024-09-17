@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <h1 class="item" style="z-index: 0"> Hello Hi!</h1>
+    <h1 class="item" style="z-index: 0;"> {{ textRef }}</h1>
     <div class="animation-wrapper">
       <div class="sphere-animation">
         <svg class="sphere" viewBox="0 0 440 440" stroke="rgba(80,80,80,.35)">
@@ -60,25 +60,31 @@
         </svg>
       </div>
     </div>
+    <div class="block" v-for="i in 100" :key="i"></div>
   </div>
-
 </template>
 
 <script setup lang="ts">
-  import { onMounted, ref, watchEffect } from 'vue';
+  import { onMounted, onUnmounted, ref, watchEffect } from 'vue';
   import anime from 'animejs';
   import { useData } from 'vitepress';
 
   const { isDark } = useData();
 
 
+  const textRef = ref('Hello HI !');
+
+
   const bg1 = ref(['#373734', '#242423', '#0D0D0C']);
 
+  const blockBg = ref('');
   watchEffect(() => {
     if (isDark.value) {
       bg1.value = ['#373734', '#242423', '#0D0D0C'];
+      blockBg.value = 'white';
     } else {
       bg1.value = ['#FFFFFF', '#F0F0F0', '#E0E0E0'];
+      blockBg.value = '#7930e7';
     }
   });
 
@@ -100,7 +106,7 @@
     window.addEventListener('resize', resize);
   };
 
-  const sphereAnimation = () => {
+  const sphereAnimations = () => {
     let sphereEl = document.querySelector('.sphere-animation');
     let spherePathEls = sphereEl.querySelectorAll('.sphere path');
     let pathLength = spherePathEls.length;
@@ -158,38 +164,133 @@
       autoplay: false,
     });
 
-    introAnimation.play();
-    breathAnimation.play();
-    shadowAnimation.play();
+    return [breathAnimation, introAnimation, shadowAnimation];
+    // introAnimation.play();
+    // breathAnimation.play();
+    // shadowAnimation.play();
   };
 
-  onMounted(() => {
-    sphereAnimation();
-
+  const customAnimation = () => {
     let tl = anime.timeline({
       targets: '.item',
-      duration: function() {
-        return anime.random(100, 2000);
-      },
-      // loop: true,
-      // direction: 'alternate',
+      autoplay: false,
+      width: '100vw',
       easing: 'easeInOutExpo',
     });
     tl.add({
-      left: '100%',
-      zIndex: 100,
-      opacity: [0.1,1],
-      delay: anime.stagger(200),
-      // translateX: anime.random(-300, 300),
-      // translateY: anime.random(-110, 110),
-      // rotate: anime.random(-180, 180),
-    }, 0);
+      targets: '.animation-wrapper',
+      filter: 'blur(0px)',
+      scale: [0, 1],
+      opacity: [0, 1],
+      easing: 'spring',
+      duration: 2000,
+      delay: anime.stagger(500),
+    });
     tl.add({
-      scale: 10,
-      translateX: 10,
-      translateY: 0,
+      left: '100%',
+      zIndex: {
+        value: 100,
+        duration: 200,
+      },
+      opacity: [0.1, 1],
+      duration: 2000,
       delay: anime.stagger(200),
-    }, 0);
+    }, '-=1000');
+    tl.add({
+      fontSize: '10rem',
+      translateX: '20vw',
+      translateY: 0,
+      easing: 'linear',
+      duration: 1000,
+      delay: anime.stagger(200),
+    }, 100);
+    tl.add({
+      filter: 'blur(5px)',
+      opacity: 0,
+      easing: 'easeInOutQuad',
+      duration: 1000,
+      delay: anime.stagger(500),
+    });
+    tl.add({
+      targets: '.animation-wrapper',
+      filter: 'blur(50px)',
+      opacity: 0,
+      duration: 1000,
+      easing: 'easeInOutQuad',
+      delay: anime.stagger(500),
+    }, '-=500');
+    tl.add({
+      targets: '.block',
+      opacity: 1,
+      translateX: () => anime.random(-500, 500),
+      translateY: () => anime.random(-300, 300),
+      scale: () => anime.random(1, 5),
+      easing: 'linear',
+      duration: 3000,
+      delay: anime.stagger(10),
+    }, '-=500');
+    tl.add({
+      targets: '.block',
+      opacity: 0,
+      translateX: () => anime.random(0, 0),
+      translateY: () => anime.random(0, 0),
+      scale: () => anime.random(1, 5),
+      easing: 'linear',
+      duration: 3000,
+      delay: anime.stagger(10),
+    });
+    tl.add({
+      targets: '.animation-wrapper',
+      filter: 'blur(0px)',
+      scale: [0, 1],
+      opacity: 1,
+      easing: 'spring',
+      duration: 3000,
+      delay: anime.stagger(500),
+    }, '-=500');
+    tl.add({
+      filter: 'blur(0px)',
+      opacity: 1,
+      translateX: 0,
+      easing: 'easeInOutQuad',
+      delay: anime.stagger(500),
+    }, '-=1500');
+    return tl;
+  };
+
+
+  const animations = ref();
+
+  const customAnimationRef = ref();
+
+  const startSphericalAnimation = () => {
+    if (!animations.value) {
+      animations.value = sphereAnimations();
+    }
+    animations.value.forEach(animation => {
+      animation.play();
+    });
+  };
+
+  const stopSphericalAnimation = () => {
+    if (animations.value) {
+      animations.value.forEach(animation => {
+        animation.remove();
+      });
+    }
+    animations.value = [];
+  };
+
+
+  onMounted(() => {
+    startSphericalAnimation();
+    customAnimationRef.value = customAnimation();
+    customAnimationRef.value.play();
+  });
+
+  onUnmounted(() => {
+    stopSphericalAnimation();
+    customAnimationRef.value = null;
   });
 
 </script>
@@ -205,7 +306,6 @@
     height: 100vh;
     padding: 10%;
   }
-
 
   .animation-wrapper {
     width: 50%;
@@ -232,6 +332,17 @@
     .sphere path {
       stroke-width: .4px;
     }
+  }
+
+
+  .block {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    opacity: 0;
+    background: v-bind(blockBg);
+    -webkit-box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.2);
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.2);
   }
 
 </style>

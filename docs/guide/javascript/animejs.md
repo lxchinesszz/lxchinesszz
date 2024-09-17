@@ -18,6 +18,56 @@ animejs 对比 gsap 它的文档是非常清晰的，这里笔记就是为了学
 [文档](https://github.com/juliangarnier/anime/)
 :::
 
+## 常见的一些变形
+
+`anime.js` 支持许多常见的 CSS 属性动画，允许你通过 JavaScript 更加灵活地控制动画效果。以下是 `anime.js` 支持的一些常见 CSS 动画属性：
+
+### 支持的 CSS 属性
+
+| 属性名          | 说明                                 |
+|-----------------|--------------------------------------|
+| `translateX`     | 沿 X 轴平移（移动元素）             |
+| `translateY`     | 沿 Y 轴平移（移动元素）             |
+| `translateZ`     | 沿 Z 轴平移（3D 运动）              |
+| `rotate`         | 2D 旋转                            |
+| `rotateX`        | 沿 X 轴旋转（3D 旋转）              |
+| `rotateY`        | 沿 Y 轴旋转（3D 旋转）              |
+| `rotateZ`        | 沿 Z 轴旋转                         |
+| `scale`          | 2D 缩放                            |
+| `scaleX`         | 水平方向缩放                        |
+| `scaleY`         | 垂直方向缩放                        |
+| `scaleZ`         | 沿 Z 轴缩放                         |
+| `skewX`          | 沿 X 轴倾斜                        |
+| `skewY`          | 沿 Y 轴倾斜                        |
+| `opacity`        | 控制透明度                         |
+| `perspective`    | 设置 3D 透视效果                    |
+| `color`          | 颜色变化                            |
+| `background-color` | 背景颜色变化                      |
+| `border-color`   | 边框颜色变化                        |
+| `border-width`   | 边框宽度变化                        |
+| `border-radius`  | 边框圆角变化                        |
+| `width`          | 元素宽度变化                        |
+| `height`         | 元素高度变化                        |
+| `margin`         | 外边距变化                          |
+| `padding`        | 内边距变化                          |
+| `top`, `left`, `bottom`, `right` | 元素的相对位置变化   |
+| `font-size`      | 字体大小变化                        |
+| `letter-spacing` | 字符间距变化                        |
+
+### 示例
+```javascript
+anime({
+  targets: '.box',            // 目标元素
+  translateX: 250,            // 沿 X 轴平移 250 像素
+  rotate: '1turn',            // 完整旋转一圈
+  scale: 1.5,                 // 缩放至 1.5 倍
+  backgroundColor: '#FF0000', // 背景颜色变为红色
+  duration: 2000,             // 持续时间 2 秒
+  easing: 'easeInOutQuad'     // 使用 easeInOutQuad 缓动函数
+});
+```
+
+
 
 
 ## 基本用法
@@ -311,7 +361,53 @@ anime({
 });
 ```
 
-## direction
+## 其他参数
+
+### delay
+
+1. 可以为数值 `delay: 1000`
+2. 交错动画 `anime.stagger(1000,{form:'last'})`
+3. 函数 `（el， i） => i * 150` [函数参数](https://animejs.com/documentation/#functionBasedParameters)
+
+### endDelay
+
+在动画结束时添加一些额外的时间（以毫秒为单位）。允许类型跟 `delay` 的一样。
+
+
+### round
+
+将值向上舍入到小数点后 x 位。
+
+因为 anime 的动画，都是基于数值的变化改变的。所以这个 round 其实就是定义每次数值变化的小数点位。
+
+```javascript
+var roundLogEl = document.querySelector('.round-log');
+anime({
+  targets: roundLogEl,
+  innerHTML: [0, 10000],
+  easing: 'linear',
+  round: 10 //将动画值四舍五入到十进制1
+});
+```
+
+### rotate 
+
+旋转
+
+```javascript
+nime({
+   targets: '.specific-prop-params-demo .el',
+   rotate: {
+      value: 360,
+      duration: 1800,
+      easing: 'easeInOutSine'
+   },
+   delay: 250 // All properties except 'scale' inherit 250ms delay
+});
+```
+
+
+### direction
 
 | 接受        | 信息                                            |
 |-------------|-------------------------------------------------|
@@ -319,7 +415,7 @@ anime({
 | 'reverse'   | 动画进度从 100% 变为 0%                         |
 | 'alternate' | 动画进度从 0% 到 100%，然后又回到 0%            |
 
-## loop
+### loop
 
 定义动画的迭代次数。
 
@@ -339,7 +435,7 @@ anime({
 });
 ```
 
-## autoplay
+### autoplay
 
 定义动画是否自动开始。
 
@@ -380,6 +476,75 @@ anime({
   loop: true
 });
 ```
+
+## svg 
+
+### 路径动画
+
+让 `svgBox` 按照路径进行运动。
+
+[motionPath](https://animejs.com/documentation/#motionPath)
+
+```javascript
+  <div class="svgBox" style="width: 10px;height: 10px;background-color: red"></div>
+  <svg width="256" height="112" viewBox="0 0 256 112">
+      <path class="svgPath" fill="none" stroke="#FFF"
+            d="M8,56 C8,33.90861 25.90861,16 48,16 C70.09139,16 88,33.90861 88,56 C88,78.09139 105.90861,92 128,92 C150.09139,92 160,72 160,56 C160,40 148,24 128,24 C108,24 96,40 96,56 C96,72 105.90861,92 128,92 C154,93 168,78 168,56 C168,33.90861 185.90861,16 208,16 C230.09139,16 248,33.90861 248,56 C248,78.09139 230.09139,96 208,96 L48,96 C25.90861,96 8,78.09139 8,56 Z" />
+  </svg>
+  
+  const startPathAnime = () => {
+    let path = anime.path('.svgPath');
+    anime({
+      targets: '.svgBox',
+      translateX: path('x'),
+      translateY: path('y'),
+      rotate: path('angle'),
+      scale: () => anime.random(1, 5),
+      easing: 'linear',
+      duration: 20000,
+      loop: true,
+    });
+  };
+```
+
+### 变形
+
+[变形](https://animejs.com/documentation/#morphing)
+
+```javascript
+anime({
+  targets: '.morphing-demo .polymorph',
+  points: [
+    { value: [
+      '70 24 119.574 60.369 100.145 117.631 50.855 101.631 3.426 54.369',
+      '70 41 118.574 59.369 111.145 132.631 60.855 84.631 20.426 60.369']
+    },
+    { value: '70 6 119.574 60.369 100.145 117.631 39.855 117.631 55.426 68.369' },
+    { value: '70 57 136.574 54.369 89.145 100.631 28.855 132.631 38.426 64.369' },
+    { value: '70 24 119.574 60.369 100.145 117.631 50.855 101.631 3.426 54.369' }
+  ],
+  easing: 'easeOutQuad',
+  duration: 2000,
+  loop: true
+});
+```
+
+### 绘制线条
+
+[lineDrawing](https://animejs.com/documentation/#lineDrawing)
+
+```javascript
+anime({
+  targets: '.line-drawing-demo .lines path',
+  strokeDashoffset: [anime.setDashoffset, 0],
+  easing: 'easeInOutSine',
+  duration: 1500,
+  delay: function(el, i) { return i * 250 },
+  direction: 'alternate',
+  loop: true
+});
+```
+
 
 ## duration
 
