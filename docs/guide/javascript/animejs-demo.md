@@ -1,5 +1,5 @@
 ---
-title: CommonJs和ECMAScript
+title: Animejs示例
 editLink: true
 navbar: true
 category: 'JavaScript'
@@ -85,4 +85,32 @@ category: 'JavaScript'
 
 </style>
 
+```
+
+
+## Letterize
+
+```
+pnpm add letterizejs
+```
+
+Letterize.js是一个轻量级的JavaScript库，它可以将文本内容分解为单个字母，以便可以对每个字母进行动画处理。这对于创建复杂的文本动画效果非常有用。
+
+```javascript
+
+<h1 class="item" style="z-index: 0;"> {{ textRef }}</h1>
+
+const letterize = new Letterize({ targets: '.item' });
+let tl = anime.timeline({
+  targets: test.listAll,
+  delay: anime.stagger(50),
+  loop: true
+});
+tl
+  .add({
+    translateY: -40
+  })
+  .add({
+    translateY: 0
+  });
 ```

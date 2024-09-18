@@ -61,6 +61,9 @@
       </div>
     </div>
     <div class="block" v-for="i in 100" :key="i"></div>
+    <div class="btnWrapper" v-if="false"
+         style="float: left;position: absolute;bottom: 100px;width: 600px;height: 20vh;z-index: 200">
+    </div>
   </div>
 </template>
 
@@ -68,6 +71,8 @@
   import { onMounted, onUnmounted, ref, watchEffect } from 'vue';
   import anime from 'animejs';
   import { useData } from 'vitepress';
+
+  import Letterize from 'letterizejs';
 
   const { isDark } = useData();
 
@@ -99,7 +104,7 @@
       var elOffsetWidth = el.offsetWidth - pad;
       var parentOffsetWidth = parentEl.offsetWidth;
       var ratio = parentOffsetWidth / elOffsetWidth;
-      timeout = setTimeout(anime.set(el, { scale: ratio }), 10);
+      timeout = setTimeout(() => anime.set(el, { scale: ratio }), 10);
     }
 
     resize();
@@ -171,12 +176,16 @@
   };
 
   const customAnimation = () => {
+    const letterize = new Letterize({ targets: '.item' });
     let tl = anime.timeline({
-      targets: '.item',
+      targets: letterize.listAll,
       autoplay: false,
+      zIndex: 100,
       width: '100vw',
       easing: 'easeInOutExpo',
     });
+
+    // 球形弹出
     tl.add({
       targets: '.animation-wrapper',
       filter: 'blur(0px)',
@@ -186,30 +195,34 @@
       duration: 2000,
       delay: anime.stagger(500),
     });
+    // 字体弹出
     tl.add({
       left: '100%',
       zIndex: {
         value: 100,
         duration: 200,
       },
-      opacity: [0.1, 1],
-      duration: 2000,
+      opacity: [0, 1],
+      duration: 1000,
       delay: anime.stagger(200),
     }, '-=1000');
+    // 字体放大
     tl.add({
       fontSize: '10rem',
-      translateX: '20vw',
+      // translateX: '20vw',
       translateY: 0,
       easing: 'linear',
       duration: 1000,
       delay: anime.stagger(200),
     }, 100);
+    // 字体模糊消失
     tl.add({
+      targets: '.item',
       filter: 'blur(5px)',
       opacity: 0,
       easing: 'easeInOutQuad',
       duration: 1000,
-      delay: anime.stagger(500),
+      delay: anime.stagger(1),
     });
     tl.add({
       targets: '.animation-wrapper',
@@ -249,12 +262,44 @@
       delay: anime.stagger(500),
     }, '-=500');
     tl.add({
+      targets: '.item',
       filter: 'blur(0px)',
       opacity: 1,
       translateX: 0,
-      easing: 'easeInOutQuad',
+      zIndex: 200,
+      easing: 'spring',
+      duration: 3000,
       delay: anime.stagger(500),
     }, '-=1500');
+
+    tl.finished.then(() => {
+      anime({
+        targets: letterize.listAll,
+        fontSize: [{
+          value: '11rem',
+        }, {
+          value: '10rem',
+        }],
+        zIndex: 200,
+        keyframes: [
+          {
+            color: 'rgb(249, 248, 111)',
+          }, {
+            color: 'rgb(250, 199, 96)',
+          }, {
+            color: 'rgb(248, 149, 114)',
+          }, {
+            color: 'rgb(246, 110, 145)',
+          }, {
+            color: 'rgb(0, 0, 0)',
+          },
+        ],
+        loop: 3,
+        easing: 'linear',
+        direction: 'alternate',
+        delay: anime.stagger(500),
+      });
+    });
     return tl;
   };
 
@@ -334,6 +379,9 @@
     }
   }
 
+  .item {
+    z-index: 100;
+  }
 
   .block {
     position: absolute;
@@ -345,4 +393,15 @@
     box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.2);
   }
 
+  .btnWrapper {
+    background-color: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
+    -webkit-box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    color: rgba(255, 255, 255, 0.75);
+  }
 </style>

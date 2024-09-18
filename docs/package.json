@@ -18,6 +18,7 @@
     "@types/node": "^22.5.4",
     "add": "^2.0.6",
     "animejs": "^3.2.2",
+    "letterizejs": "^2.0.1",
     "vitepress": "1.0.1",
     "vitepress-theme-demoblock": "3.0.7"
   }

@@ -671,6 +671,8 @@ anime({
 
 [动画曲线](https://animejs.com/documentation/#linearEasing)
 
+[可视化](https://codepen.io/juliangarnier/pen/mWdraw)
+
 ### linear
 
 对于不透明度和颜色过渡很有用。
