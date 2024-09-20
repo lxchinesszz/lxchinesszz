@@ -5,27 +5,31 @@ export default [
     items: [
       {
         text: '前端',
-        items: [{ text: 'JavaScript', link: '/guide/' },
+        items: [{ text: 'JavaScript', link: '/post/guide/' },
           { text: 'VUI', link: '/components/' }],
       },
       {
         text: '后端',
-        items: [{ text: 'Java', link: '/java/' },
-          { text: 'Python', link: '/python/' },
-          { text: 'Testing', link: '/test/' },
+        items: [{ text: 'Java', link: '/post/java/' },
+          { text: 'Python', link: '/post/python/' },
+          { text: 'Testing', link: '/post/test/' },
+          { text: '项目', link: '/post/project/' },
         ],
       },
-      { text: '项目', link: '/project/' },
       {
-        text: 'AI', link: '/ai/',
+        text: '其他',
+        items: [{ text: 'AI', link: '/post/ai/' },
+          { text: 'other', link: '/post/other/' },
+        ],
       },
+
     ],
   },
   {
     text: '生活',
-    link: '/design/',
+    link: '/post/design/',
   },
-  { text: '供应链', link: '/scm/' },
+  { text: '供应链', link: '/post/scm/' },
   {
     text: '志同道合',
     items: [
@@ -65,6 +69,7 @@ export default [
           { text: 'rough-notation', link: 'https://github.com/rough-stuff/rough-notation' },
           { text: 'swapy', link: 'https://github.com/TahaSh/swapy' },
           { text: 'loading.io', link: 'https://loading.io/' },
+          { text: '倾斜视差', link: 'https://micku7zu.github.io/vanilla-tilt.js' },
         ],
       },
     ],

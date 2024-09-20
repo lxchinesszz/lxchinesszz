@@ -3,7 +3,7 @@ title: 文本介绍
 editLink: true
 sidebar: true
 aside: false
-category: '首页模板'
+category: '02-首页模板'
 ---
 
 # 首页模板

@@ -5,7 +5,7 @@ navbar: true
 ---
 
 
-<XHome style="width: 100vw;height:calc(100vh - var(--vp-nav-height))"/>
+<XHome style="width: 100vw;height:calc(100vh - var(--vp-nav-height));overflow: hidden;"/>
 
 
 <style>

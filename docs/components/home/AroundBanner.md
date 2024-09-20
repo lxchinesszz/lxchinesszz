@@ -2,7 +2,7 @@
 title: 图片介绍
 editLink: true
 sidebar: true
-category: '首页模板'
+category: '02-首页模板'
 aside: false
 ---
 

@@ -52,19 +52,19 @@ function listAllFile(dir: string): Dirent[] {
 }
 
 
+function extractNumber(text: string): number {
+  // 使用正则表达式匹配数字，并捕获第一个匹配项
+  const match = text.match(/\d+/);
+  if (!match) {
+    // 如果没有找到数字，则返回一个默认值（这里使用Infinity，以便在排序时将其放在最后）
+    return Infinity;
+  }
+  // 将匹配到的数字转换为整数，并去除前导零
+  return parseInt(match[0], 10);
+}
+
 function sortSidebarItems(sidebar: Sidebar): Sidebar {
   // 定义一个辅助函数来从text中提取数字，并处理前导零
-  function extractNumber(text: string): number {
-    // 使用正则表达式匹配数字，并捕获第一个匹配项
-    const match = text.match(/\d+/);
-    if (!match) {
-      // 如果没有找到数字，则返回一个默认值（这里使用Infinity，以便在排序时将其放在最后）
-      return Infinity;
-    }
-    // 将匹配到的数字转换为整数，并去除前导零
-    return parseInt(match[0], 10);
-  }
-
   // 对items进行排序
   sidebar.items.sort((a, b) => {
     // 提取两个SidebarItem的text中的数字
@@ -75,7 +75,6 @@ function sortSidebarItems(sidebar: Sidebar): Sidebar {
     return numA - numB;
   });
 
-  // 返回排序后的Sidebar对象
   return sidebar;
 }
 
@@ -85,8 +84,8 @@ function capitalizeFirstLetter(string: string) {
 
 export function buildSidebar(dir: string) {
   // console.log(`dir:${dir}`);
-  let number = dir.lastIndexOf('/');
-  let sidebarDir = `${dir.slice(number, dir.length)}/`;
+  let sidebarDir = `${dir.split('docs')[1]}/`;
+  // console.log(sidebarDir);
   // console.log(`sidebarDir:${sidebarDir}`);
   let parentPath = path.dirname(dir);
   // console.log(`loadPathFile:${parentPath}`);
@@ -99,15 +98,16 @@ export function buildSidebar(dir: string) {
     const filePath = `${file.parentPath}/${file.name}`;
     const data = matter(readMarkdown(filePath)).data;
     let dirName = capitalizeFirstLetter(file.parentPath.substring(file.parentPath.lastIndexOf('/') + 1, file.parentPath.length));
-    let sidebarKeyword = data['category'] ? `${file.parentPath}-${data['category']}` : `${file.parentPath}-${dirName}`;
+    let sidebarKeyword = data['category'] ? `${file.parentPath}#${data['category']}` : `${file.parentPath}#${dirName}`;
     let title = data['title'];
     sidebar.text = sidebarKeyword;
     if (sidebarKeyword) {
-      const prefix = file.parentPath.replace(parentPath, '');
+      const prefix = file.parentPath.split('docs')[1];
       if (!file.name.endsWith('.md')) {
         return;
       }
       const link = `${prefix}/${file.name.replace('.md', '')}`;
+      // console.log(`link:${link}`);
       let isIndex = link.endsWith('index') || link.endsWith('README') || link.endsWith('readme');
       if (isIndex) {
         sidebarCategoryMap.set(file.parentPath, link);
@@ -128,8 +128,8 @@ export function buildSidebar(dir: string) {
   // console.log(sidebarCategoryMap);
   for (let mapElement of map) {
     let categoryFullPath = mapElement[0];
-    let categoryParentName = categoryFullPath.split('-')[0];
-    let categoryName = categoryFullPath.split('-')[1];
+    let categoryParentName = categoryFullPath.split('#')[0];
+    let categoryName = categoryFullPath.split('#')[1];
     // console.log(`categoryFullPath===>${categoryParentName}`);
     let categoryLink = sidebarCategoryMap.get(categoryParentName);
     sidebarByKeywords.push(sortSidebarItems({
@@ -140,6 +140,13 @@ export function buildSidebar(dir: string) {
       }),
     );
   }
+  sidebarByKeywords.sort((a, b) => {
+    // 提取两个SidebarItem的text中的数字
+    const numA = extractNumber(a.text || '');
+    const numB = extractNumber(b.text || '');
+    // 根据提取的数字进行排序
+    return numA - numB;
+  });
   result[sidebarDir] = sidebarByKeywords;
   return result;
 }
@@ -151,7 +158,6 @@ export function buildSidebars(dirs: string[]) {
     let sidebar1 = buildSidebar(dirs[i]);
     sidebars = { ...sidebars, ...sidebar1 };
   }
-  // console.log(sidebars);
   return sidebars;
 }
 

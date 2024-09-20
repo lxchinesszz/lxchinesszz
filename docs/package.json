@@ -9,6 +9,9 @@
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
   },
+  "engines": {
+    "node": "18.16.0"
+  },
   "web-typs": "./web-types.json",
   "keywords": [],
   "author": "",
@@ -19,6 +22,7 @@
     "add": "^2.0.6",
     "animejs": "^3.2.2",
     "letterizejs": "^2.0.1",
+    "vanilla-tilt": "^1.8.1",
     "vitepress": "1.0.1",
     "vitepress-theme-demoblock": "3.0.7"
   }

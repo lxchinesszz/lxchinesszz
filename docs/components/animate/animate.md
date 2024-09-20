@@ -1,7 +1,7 @@
 ---
 navbar: true
 title: v-animate
-category: '动画'
+category: '04-动画'
 ---
 
 # 快速上手

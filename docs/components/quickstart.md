@@ -1,7 +1,7 @@
 ---
 navbar: true
 title: 快速开始
-category: '开发指南'
+category: '01-开发指南'
 ---
 
 # 快速上手
