@@ -13,7 +13,7 @@
     <div
       style="width: 100vw;height: 25vh;text-align: center;margin-top: 2rem;display: flex;flex-direction: column; justify-content: center;align-items: center">
       <div class="item" style="font-size: 0"> {{ textRef }}</div>
-      <div style="font-size: 1.5rem;margin-top: 1rem" class="gsc">
+      <div style="font-size: 1.5rem;margin-top: 1rem;scale: 1" class="gsc gradient-text">
         {{ gushici }}
       </div>
       <Sphere class="sphere" style="opacity: 0.2" />
@@ -236,4 +236,33 @@
     transform: translateX(-50%) rotate(300deg);
   }
 
+
+  .gradient-text {
+    font-size: 3rem;
+    font-weight: 300; /* 使用较细的字体重量 */
+    background: linear-gradient(
+      to right,
+      #2c3e50,  /* 深蓝灰色 */
+      #34495e,  /* 中蓝灰色 */
+      #5D6D7E   /* 浅蓝灰色 */
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradient 8s ease infinite;
+    letter-spacing: 1px; /* 增加字母间距 */
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 </style>
