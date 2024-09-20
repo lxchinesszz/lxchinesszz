@@ -148,3 +148,5 @@ docs/.vitepress/cache
 !/docs/.vitepress/cache/
 !/docs/.vitepress/cache/
 !/docs/.vitepress/cache/
+/docs/node_modules/.vue-global-types/vue_3.3_false.d.ts
+/docs/node_modules/vanilla-tilt/
