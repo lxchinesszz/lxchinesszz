@@ -1,67 +1,73 @@
 {
-  "hash": "1e834dcd",
+  "hash": "6a3b02b0",
   "configHash": "4e7505ad",
-  "lockfileHash": "13422f66",
-  "browserHash": "ad37099d",
+  "lockfileHash": "6c1d9dac",
+  "browserHash": "bbdf9227",
   "optimized": {
     "vue": {
       "src": "../../../node_modules/.pnpm/vue@3.5.5/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "7ee79034",
+      "fileHash": "a4712a19",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../node_modules/.pnpm/@vue+devtools-api@7.4.5/node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "7a63ca3a",
+      "fileHash": "896a82ff",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../node_modules/.pnpm/@vueuse+core@10.11.1_vue@3.5.5/node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "6549bd11",
+      "fileHash": "cd84acaa",
       "needsInterop": false
     },
     "vitepress > @vueuse/integrations/useFocusTrap": {
       "src": "../../../node_modules/.pnpm/@vueuse+integrations@10.11.1_focus-trap@7.6.0_vue@3.5.5/node_modules/@vueuse/integrations/useFocusTrap.mjs",
       "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "1769f9f5",
+      "fileHash": "65472866",
       "needsInterop": false
     },
     "vitepress > mark.js/src/vanilla.js": {
       "src": "../../../node_modules/.pnpm/r2.cnpmjs.org+mark.js@8.11.1/node_modules/mark.js/src/vanilla.js",
       "file": "vitepress___mark__js_src_vanilla__js.js",
-      "fileHash": "e1d326a6",
+      "fileHash": "b9b2e265",
       "needsInterop": false
     },
     "vitepress > minisearch": {
       "src": "../../../node_modules/.pnpm/minisearch@6.3.0/node_modules/minisearch/dist/es/index.js",
       "file": "vitepress___minisearch.js",
-      "fileHash": "90011a7f",
+      "fileHash": "5b67402b",
       "needsInterop": false
     },
     "typed.js": {
       "src": "../../../../node_modules/.pnpm/typed.js@2.1.0/node_modules/typed.js/dist/typed.module.js",
       "file": "typed__js.js",
-      "fileHash": "cf64d0dd",
+      "fileHash": "d7645bce",
       "needsInterop": false
     },
     "vue-demi": {
       "src": "../../../node_modules/.pnpm/vitepress@1.0.1_@algolia+client-search@5.4.1_@types+node@22.5.4_search-insights@2.17.2/node_modules/vitepress/lib/vue-demi.mjs",
       "file": "vue-demi.js",
-      "fileHash": "2163adea",
+      "fileHash": "4f9316b8",
       "needsInterop": false
     },
     "animejs": {
       "src": "../../../node_modules/.pnpm/animejs@3.2.2/node_modules/animejs/lib/anime.es.js",
       "file": "animejs.js",
-      "fileHash": "50aeb67c",
+      "fileHash": "42037184",
       "needsInterop": false
     },
     "letterizejs": {
       "src": "../../../node_modules/.pnpm/r2.cnpmjs.org+letterizejs@2.0.1/node_modules/letterizejs/lib/letterize.js",
       "file": "letterizejs.js",
-      "fileHash": "36b452f4",
+      "fileHash": "8c5526cd",
+      "needsInterop": false
+    },
+    "vanilla-tilt": {
+      "src": "../../../node_modules/.pnpm/vanilla-tilt@1.8.1/node_modules/vanilla-tilt/lib/vanilla-tilt.es2015.js",
+      "file": "vanilla-tilt.js",
+      "fileHash": "f699e429",
       "needsInterop": false
     }
   },
