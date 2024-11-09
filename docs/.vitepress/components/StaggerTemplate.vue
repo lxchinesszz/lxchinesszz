@@ -2,8 +2,8 @@
   <div id="container">
     <div class="animation-wrapper">
       <div class="stagger-visualizer">
-        <div class="cursor color-red" style="color: red"></div>
-        <div class="dots-wrapper" style="color:white;">
+        <div class="cursor" style="color: red"></div>
+        <div class="dots-wrapper">
           <div class="dot" v-for="item in 200" :key="item"></div>
         </div>
       </div>
@@ -13,8 +13,27 @@
 
 <script setup lang="ts">
   import anime from 'animejs';
-  import { onMounted } from 'vue';
+  import { onMounted, onUnmounted, ref, watchEffect } from 'vue';
 
+  import { useData } from 'vitepress';
+
+  const { isDark } = useData();
+
+
+  const bg1 = ref(['#373734', '#242423', '#0D0D0C']);
+
+  const blockBg = ref(isDark ? '##1b1a1f' : 'white');
+
+  const linearGradient = ref('linear-gradient(180deg, #FFFFFF 8%, #373734 100%)');
+  watchEffect(() => {
+    if (isDark.value) {
+      linearGradient.value = 'linear-gradient(180deg, #373734 8%, #1b1a1f 100%)';
+      blockBg.value = '#1b1a1f';
+    } else {
+      linearGradient.value = 'linear-gradient(180deg, #FFFFFF 8%, #D3CDC6 100%)';
+      blockBg.value = 'white';
+    }
+  });
 
   let fitElementToParent = (el, padding) => {
     var timeout = null;
@@ -107,24 +126,39 @@
       index = nextIndex;
     };
 
-    return { play };
+    let stop = () => {
+      paused = false;
+      if (animation) animation.pause();
+      animation = null;
+    };
+    return { play, stop };
   };
 
+  let animate = ref();
 
   onMounted(() => {
-    advancedStaggeringAnimation().play();
+    animate.value = advancedStaggeringAnimation();
+    animate.value.play();
+  });
+
+  onUnmounted(() => {
+    if (animate.value) {
+      animate.value.stop();
+      animate.value = null;
+    }
   });
 </script>
 
 <style scoped>
 
-  body {
+  #container {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+    background-color: v-bind(blockBg)
   }
 
 
@@ -159,14 +193,14 @@
     width: 23px;
     height: 23px;
     margin: 16px;
-    background-color: currentColor;
+    background-color: red;
     border-radius: 50%;
   }
 
   @media (min-width: 740px) {
     .stagger-visualizer .dot {
       background-color: transparent;
-      background-image: linear-gradient(180deg, #FFFFFF 8%, #D3CDC6 100%);
+      background-image: v-bind(linearGradient);
     }
   }
 
@@ -182,7 +216,6 @@
   }
 
   .dot {
-    background-color: white;
-    color: white;
+    color: v-bind(blockBg);
   }
 </style>

@@ -1,0 +1,6 @@
+/*.json
+/*.js
+dist
+web-vue
+web-types.json
+/src/components/VCommonTest.vue

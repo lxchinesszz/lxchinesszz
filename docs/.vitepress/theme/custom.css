@@ -1,31 +1,37 @@
-.VPSidebarItem.level-1 {
-    padding-left: 10px;
-    margin-left: 10px;
+.VPNavBar {
+    /*background-color: rgba(255, 255, 255, 0.25) !important;*/
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(60px);
 }
 
-.VPSidebarItem.level-1.is-link.is-active.has-active {
-    color: var(--vp-c-indigo-3);
-    background-color: #e1eeff;
-    /*font-weight: 900;*/
-    border-radius: 5px;
-    transition: background-color 300ms;
-}
+/*.VPSidebarItem.level-1 {*/
+/*    padding-left: 10px;*/
+/*    margin-left: 10px;*/
+/*}*/
 
-.VPSidebarItem {
-    position: relative;
-    padding-bottom: 0px !important;
-}
+/*.VPSidebarItem.level-1.is-link.is-active.has-active {*/
+/*    color: var(--vp-c-indigo-3);*/
+/*    background-color: #e1eeff;*/
+/*    !*font-weight: 900;*!*/
+/*    border-radius: 5px;*/
+/*    transition: background-color 300ms;*/
+/*}*/
 
-.group {
-    border-top: none !important;
-}
+/*.VPSidebarItem {*/
+/*    position: relative;*/
+/*    padding-bottom: 0px !important;*/
+/*}*/
 
-.VPSidebarItem .items::before {
-    position: absolute;
-    background-color: #e5e7eb;
-    top: 35px; /* 或者可能是 padding-top: some-value; 但没有明确的值，这里只是示意 */
-    bottom: 0;
-    left: 0;
-    width: 1.3px;
-    content: "";
-}
+/*.group {*/
+/*    border-top: none !important;*/
+/*}*/
+
+/*.VPSidebarItem .items::before {*/
+/*    position: absolute;*/
+/*    background-color: #e5e7eb;*/
+/*    top: 35px; !* 或者可能是 padding-top: some-value; 但没有明确的值，这里只是示意 *!*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    width: 1.3px;*/
+/*    content: "";*/
+/*}*/

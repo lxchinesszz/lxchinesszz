@@ -23,7 +23,7 @@ image: https://img.springlearn.cn/blog/b8f74de10af99991e3fc73632eeeb190.png
 >天下代码一大抄, 抄来抄去有提高, 看你会抄不会抄！
 
 
-[toc]
+[[toc]]
 
 ## 一、前言
 

@@ -19,10 +19,11 @@ declare type __VLS_WithTemplateSlots_2<T, S> = T & {
 
 declare type AlignType = 'center' | 'end' | 'start' | 'baseline' | undefined;
 
-export declare type AnimateOption = {
+declare type AnimateOption = {
     type: string;
     duration?: number;
     disabled?: boolean;
+    intersecting?: boolean;
 };
 
 declare type AnimateOption_2 = {
@@ -99,6 +100,12 @@ declare type ImagePosition = {
 
 declare type PositionType = 'left' | 'right';
 
+export declare function useScrollAnimate(): {
+    createObserver: (cssName: string, changeClassName: string) => void;
+    disconnect: () => void;
+    addAnimatePrefixIfNeeded: (className: string) => string;
+};
+
 export declare const VAnimate: __VLS_WithTemplateSlots<DefineComponent<ExtractPropTypes<    {
 /**
 * 动画样式
@@ -109,6 +116,7 @@ default: {
 type: string;
 duration: number;
 disabled: boolean;
+intersecting: boolean;
 };
 };
 }>, {
@@ -123,6 +131,7 @@ default: {
 type: string;
 duration: number;
 disabled: boolean;
+intersecting: boolean;
 };
 };
 }>> & Readonly<{}>, {
@@ -206,8 +215,8 @@ success: (...args: any[]) => void;
 }, string, PublicProps, Readonly<ExtractPropTypes<    {
 src: StringConstructor;
 }>> & Readonly<{
-onError?: ((...args: any[]) => any) | undefined;
-onSuccess?: ((...args: any[]) => any) | undefined;
+onError?: (...args: any[]) => any;
+onSuccess?: (...args: any[]) => any;
 }>, {}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 export declare const VImageCard: __VLS_WithTemplateSlots_2<DefineComponent<ExtractPropTypes<    {
@@ -314,3 +323,53 @@ declare const VUI: {
 export default VUI;
 
 export { }
+
+
+declare namespace advancedFormat {
+    let exports: {};
+}
+
+
+declare namespace customParseFormat {
+    let exports: {};
+}
+
+
+declare namespace dayjs_min {
+    let exports: {};
+}
+
+
+declare namespace isBetween {
+    let exports: {};
+}
+
+
+declare namespace leaderLine_min {
+    let exports: {};
+}
+
+
+declare namespace quarterOfYear {
+    let exports: {};
+}
+
+
+declare namespace weekOfYear {
+    let exports: {};
+}
+
+
+declare namespace weekYear {
+    let exports: {};
+}
+
+
+declare namespace zhCn {
+    let exports: {};
+}
+
+
+declare namespace VUI {
+    function install(app: any): void;
+}

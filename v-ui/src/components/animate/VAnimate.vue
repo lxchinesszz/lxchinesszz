@@ -1,5 +1,5 @@
 <template>
-  <div ref="boxRef" class="animate__box">
+  <div ref="boxRef" class="animate__box" @click="replay">
     <slot />
   </div>
 </template>
@@ -15,14 +15,13 @@
    * @prop {String} message - 要显示的欢迎信息。
    * @event replay 执行动画
    */
-  import { computed, onMounted, PropType, ref } from 'vue';
-  import { AnimateOption } from '@/components/animate/types.ts';
+  import { computed, onMounted, onUnmounted, PropType, ref, useId } from 'vue';
+  import { AnimateOption } from '@/components/animate/types';
 
   /**
    * animate.css 组件的封装使用
    */
   const props = defineProps({
-
     /**
      * 动画样式
      */
@@ -32,18 +31,23 @@
         type: 'fadeIn',
         duration: 1,
         disabled: false,
+        intersecting: false,
       },
     },
   });
 
   const boxRef = ref();
 
+  const id = useId();
+
+  const classId = `animate__box`;
+
   /**
    * 执行动画
    */
   const replay = () => {
     const classNames = boxRef.value.className.split(' ');
-    classNames.push('animate__box');
+    classNames.push(classId);
     boxRef.value.className = classNames.join(' ');
   };
 
@@ -56,10 +60,37 @@
     boxRef.value.className = filteredClasses.join(' ');
   };
 
+  const observer = ref<IntersectionObserver>();
+
+  onUnmounted(() => {
+    if (observer.value) {
+
+      observer.value.disconnect();
+      observer.value = null;
+    }
+
+  });
+
   onMounted(() => {
     boxRef.value.addEventListener('animationend', function() {
       removeAnimate();
     });
+    if (props.animate.intersecting) {
+      // 使用 Intersection Observer 来检测卡片的可见性
+      observer.value = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            replay();
+          }
+        });
+      }, {
+        threshold: 0.1, // 当 10% 的卡片可见时触发
+      });
+      // 观察所有卡片
+      document.querySelectorAll(`.${classId}`).forEach(card => {
+        observer.value.observe(card);
+      });
+    }
   });
 
   defineExpose({ replay });
@@ -87,6 +118,8 @@
     }
     return `${props.animate.duration ?? 1}s`;
   });
+
+
 </script>
 
 <style scoped lang="less">

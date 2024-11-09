@@ -14,6 +14,7 @@ backtotop: true
 sidebarDepth: 3
 title: JMH基准测试
 password: 123
+category: JMH
 icon: zuanshi
 ---
 

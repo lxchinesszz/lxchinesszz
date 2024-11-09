@@ -1,0 +1,829 @@
+<template>
+  <div id="container" class="custom-scrollbar">
+    <div id="ball"></div>
+    <div
+      class="section home"
+      style="
+        display: flex;
+        flex-direction: row;
+        /*background: url('webstorm.svg') scroll no-repeat left calc(50% + 386px)*/
+        /*  top -104px / 2200px 1000px;*/
+      "
+    >
+      <div
+        style="
+          flex: 1;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <a-space direction="vertical" style="margin-top: -5vw" size="medium">
+          <h1 style="font-size: 3.5rem; font-weight: bold">Devs 西魏陶渊明</h1>
+          <a-typography-text>
+            用于帮助收集、整理和管理日常生活、工作中的各种信息。一个存储笔记的地方。
+          </a-typography-text>
+          <a-space>
+            <a-avatar-group>
+              <a-avatar
+                image-url="https://g.csdnimg.cn/static/logo/favicon32.ico"
+                >CSDN
+              </a-avatar>
+              <a-avatar
+                :style="{ backgroundColor: '#ffffff' }"
+                image-url="https://img.alicdn.com/tfs/TB1_ZXuNcfpK1RjSZFOXXa6nFXa-32-32.ico"
+                >阿里云博客专家
+              </a-avatar>
+              <a-avatar
+                :style="{ backgroundColor: '#ffffff' }"
+                image-url="https://p1.itc.cn/images01/20231015/7ea0bc9819fd4546a32067f2da0fccdd.jpeg"
+                object-fit="cover"
+                >华为云享专家
+              </a-avatar>
+              <a-avatar
+                image-url="https://sf3-cdn-tos.douyinstatic.com/obj/eden-cn/uhbfnupkbps/toutiao_favicon.ico"
+                object-fit="cover"
+                >头条
+              </a-avatar>
+            </a-avatar-group>
+            活跃媒体平台
+          </a-space>
+          <a-rate :default-value="5" grading />
+          <a-button type="primary"><a href="post/java/">开始阅读</a></a-button>
+        </a-space>
+      </div>
+      <div
+        style="
+          flex: 1;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <MacWindow />
+      </div>
+    </div>
+    <div class="section">
+      <div class="section_title">技能</div>
+      <a-grid
+        :cols="{ xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }"
+        :colGap="12"
+        :rowGap="16"
+        style="width: 100%"
+      >
+        <a-grid-item class="card" v-for="(item, index) in skills" :key="index">
+          <a-space direction="vertical" fill>
+            <a-typography-title :heading="5">
+              {{ item.title }}
+            </a-typography-title>
+            <a-progress
+              :percent="item.scale / 100"
+              :color="{
+                '0%': 'rgb(var(--primary-6))',
+                '100%': 'rgb(var(--success-6))',
+              }"
+            />
+            <a-space wrap>
+              <a-tag
+                v-for="(tag, index) in item.uses"
+                :key="index"
+                :color="tag.color"
+              >
+                {{ tag.name }}
+              </a-tag>
+            </a-space>
+          </a-space>
+        </a-grid-item>
+      </a-grid>
+    </div>
+    <div class="section life">
+      <div class="card introduction">
+        <div class="left">
+          <a-space direction="vertical" fill>
+            <div
+              style="display: flex; justify-content: start; align-items: center"
+            >
+              <a-avatar
+                :size="40"
+                shape="square"
+                style="background-color: #da0f0f"
+                >Tiktok
+              </a-avatar>
+              <h1
+                style="
+                  color: #da0f0f;
+                  font-weight: bold;
+                  margin-left: 15px;
+                  scale: 1.2;
+                "
+              >
+                Tiktok
+              </h1>
+            </div>
+            <a-typography-paragraph>
+              从事供应链系统开发及财务系统开发、财务系统开发。
+              完成供应链全业务流程设计参与开发 A design is a plan or
+              specification for the construction of an object or system or for
+              the implementation of an activity or process, or the result of be
+              a design activity.
+            </a-typography-paragraph>
+          </a-space>
+          <div class="card small_card">
+            <a-statistic
+              extra="Work"
+              :start="true"
+              :value="4"
+              :precision="0.1"
+            />
+          </div>
+        </div>
+        <div class="right">
+          <div class="bu"></div>
+        </div>
+      </div>
+    </div>
+    <div class="section system">
+      <div class="section_title">参与系统设计</div>
+      <!--      采购，履约，仓网-->
+      <a-grid
+        :cols="{ xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }"
+        :colGap="12"
+        :rowGap="16"
+        style="width: 100%"
+      >
+        <a-grid-item
+          class="card"
+          v-for="(item, index) in scmSystems"
+          :key="index"
+        >
+          <a-space direction="vertical" fill>
+            <div
+              style="display: flex; justify-content: start; align-items: center"
+            >
+              <a-avatar
+                :size="40"
+                shape="square"
+                style="background-color: #1d60f4"
+              >
+                {{ item.name }}
+              </a-avatar>
+              <h1
+                style="
+                  color: #1d60f4;
+                  font-weight: bold;
+                  margin-left: 5px;
+                  scale: 1;
+                "
+              >
+                {{ item.name }}
+              </h1>
+            </div>
+
+            <a-typography-paragraph> {{ item.desc }}</a-typography-paragraph>
+            <a-space size="mini" wrap>
+              <span>业务视角:</span>
+              <a-tag v-for="(tag, index) in item.scm" :key="index">
+                {{ tag }}
+              </a-tag>
+            </a-space>
+
+            <a-space size="mini" wrap>
+              <span>财务视角:</span>
+              <a-tag v-for="(tag, index) in item.fms" :key="index">
+                {{ tag }}
+              </a-tag>
+            </a-space>
+          </a-space>
+        </a-grid-item>
+      </a-grid>
+    </div>
+    <div class="section">
+      <FinanceBanner />
+    </div>
+    <div
+      class="section finance"
+      style="display: flex; justify-content: center; align-items: center"
+    >
+      <a-row style="width: 100%; height: 70vh">
+        <a-col :span="10" style="height: 100%">
+          <a-grid :cols="1" :row-gap="5" style="height: 100%; padding: 0 15px">
+            <a-grid-item class="fms_table card">
+              <div class="fms_table_title">利润表</div>
+            </a-grid-item>
+            <a-grid-item class="fms_table card">
+              <div class="fms_table_title">资产负债表</div>
+            </a-grid-item>
+            <a-grid-item class="fms_table card">
+              <div class="fms_table_title">现金流量表</div>
+            </a-grid-item>
+          </a-grid>
+        </a-col>
+        <a-col :offset="1" :span="12" style="height: 100%">
+          <a-grid :cols="1" :row-gap="10" style="height: 100%; padding: 0 0">
+            <a-grid-item class="card" style="padding: 0; border-radius: 15px">
+              <div
+                style="
+                  background-color: #ff6f3c;
+                  height: 100%;
+                  border-radius: 15px;
+                  border: white 5px solid;
+                  font-weight: bold;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <a-typography-title
+                  :heading="6"
+                  style="color: white; padding: 15px"
+                >
+                  <!--                <a-typography-paragraph style="color: white; padding: 15px">-->
+                  从财务视角出发，重新审视其业务逻辑。构建一套机制，能够将企业的各项业务活动无缝对接至财务框架中，通过详尽记录并分析其收支状况，从而为企业决策提供坚实的数据支撑，确保每一步战略都紧密围绕盈利目标展开。
+                  <!--                </a-typography-paragraph>-->
+                </a-typography-title>
+              </div>
+            </a-grid-item>
+            <a-grid-item class="card" style="padding: 0; border-radius: 15px">
+              <div
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  border: white 5px solid;
+                  background-color: #155263;
+                  color: white;
+                  border-radius: 15px;
+                  height: 100%;
+                  font-weight: bold;
+                  font-size: 3rem;
+                "
+              >
+                资产 = 负债
+                <span style="color: #fe6f3d; margin: 0.5rem">+</span> 所有者权益
+              </div>
+            </a-grid-item>
+          </a-grid>
+        </a-col>
+      </a-row>
+    </div>
+    <div class="section">
+      <a-row style="height: 40vh; width: 100%">
+        <a-col
+          :span="14"
+          class="card"
+          style="height: 95%; background: white; margin: 0 5px"
+        >
+          <h1 style="height: 5%">时间</h1>
+          <PeopleTimeEchart style="height: 80%" />
+        </a-col>
+        <a-col
+          :flex="1"
+          class="card"
+          style="height: 95%; background: white; margin: 0 5px"
+        >
+          <h1 style="height: 5%">音乐</h1>
+          <MusicEchart style="height: 80%" />
+        </a-col>
+      </a-row>
+      <a-row style="height: 40vh; width: 100%">
+        <a-col
+          :span="14"
+          class="card"
+          style="height: 95%; background: white; margin: 0 5px; padding: 5px"
+        >
+          <div
+            style="
+              background-image: url('https://i.pinimg.com/originals/ae/b1/0c/aeb10ccc141384132bb20e73632f1310.gif');
+              background-position: center center;
+              width: 100%;
+              height: 100%;
+              border-radius: 15px;
+            "
+          ></div>
+        </a-col>
+        <a-col
+          class="card"
+          :flex="1"
+          style="height: 95%; background: white; margin: 0 5px; padding: 5px"
+        >
+          <div
+            style="
+              background-image: url('https://i.pinimg.com/474x/41/6d/4a/416d4ab5cec6c569269e2a9d3e650c32.jpg');
+              background-position: center center;
+              background-size: cover;
+              width: 100%;
+              height: 100%;
+              border-radius: 15px;
+            "
+          ></div>
+        </a-col>
+        <a-col
+          class="card"
+          :span="7"
+          style="height: 95%; background: white; margin: 0 5px; padding: 5px"
+        >
+          <div
+            style="
+              background-image: url('https://i.pinimg.com/originals/72/6f/94/726f94d6da52eeba5dd324251ef61c8a.gif');
+              background-position: center center;
+              width: 100%;
+              height: 100%;
+              border-radius: 15px;
+            "
+          ></div>
+          <!--          <MusicEchart style="height: 100%" />-->
+        </a-col>
+      </a-row>
+    </div>
+    <a-divider />
+    <div class="section" style="width: 100vw; height: 10vh; padding: 0 0">
+      <div
+        style="
+          position: absolute;
+          bottom: 0;
+          height: 10vh;
+          width: 100vw;
+          text-align: center;
+        "
+      >
+        只要坚持不懈，嘲笑你的人，迟早会被你笑死。 本站总访问量26895次
+        本站访客数23589人次 Copyright © 2024 西魏陶渊明
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+  //https://www.pinterest.com/pin/4081455906105353/
+  import { onMounted, onUnmounted, ref } from 'vue';
+  import PeopleTimeEchart from './PeopleTimeEchart.vue';
+  import MusicEchart from './MusicEchart.vue';
+  import MacWindow from './MacWindow.vue';
+  import FinanceBanner from './FinanceBanner.vue';
+
+  const observer = ref<IntersectionObserver>();
+
+  const titleObServer = ref<IntersectionObserver>();
+
+  function createObserver(cardCssName: string) {
+    // 使用 Intersection Observer 来检测卡片的可见性
+    observer.value = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      },
+      {
+        threshold: 0.1, // 当 10% 的卡片可见时触发
+      },
+    );
+
+    titleObServer.value = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      },
+      {
+        threshold: 0.1, // 当 10% 的卡片可见时触发
+      },
+    );
+
+    // 观察所有卡片
+    document.querySelectorAll('.section_title').forEach((card) => {
+      observer.value.observe(card);
+    });
+
+    // 观察所有卡片
+    document.querySelectorAll(cardCssName).forEach((card) => {
+      observer.value.observe(card);
+    });
+  }
+
+  function updateSpherePosition(ball) {
+    const scrollY = window.scrollY;
+    // 更新小球的垂直位置
+    ball.style.top = `${scrollY}px`;
+    // 随机生成水平偏移
+    const randomOffset = (Math.random() - 0.5) * 200; // 随机范围 -100 到 100
+    const newLeft = Math.min(
+      Math.max(50 + randomOffset, 0),
+      window.innerWidth - 50,
+    ); // 确保不超出窗口边界
+    ball.style.left = `${newLeft}px`;
+  }
+
+  const ballAnimate = () => {
+    const ball = document.getElementById('ball');
+    window.addEventListener('scroll', () => {
+      updateSpherePosition(ball);
+    });
+    window.addEventListener('resize', () => {
+      updateSpherePosition(ball);
+    });
+    window.addEventListener('click', function (event) {
+      // 在鼠标位置附近随机生成水平偏移
+      const randomOffset = (Math.random() - 0.5) * 100; // 随机范围 -50 到 50
+      const newLeft = Math.min(
+        Math.max(event.clientX + randomOffset, 0),
+        window.innerWidth - 50,
+      ); // 确保不超出窗口边界
+      ball.style.left = `${newLeft}px`;
+      // 更新小球的垂直位置
+      const clickY = event.clientY + window.scrollY;
+      ball.style.top = `${clickY}px`;
+    });
+  };
+
+  type Tag = {
+    color?: string;
+    name: string;
+  };
+
+  type Skill = {
+    title: string;
+    desc: string;
+    scale?: number;
+    uses?: Tag[];
+  };
+
+  type ScmSystem = {
+    name: string;
+    desc: string;
+    scm: string[];
+    fms: string[];
+  };
+
+  const scmSystems = ref<ScmSystem[]>([
+    {
+      name: 'PMS',
+      desc: '采购管理系统',
+      scm: ['采购下单', '到货通知', '...'],
+      fms: ['账单预付', '供应商结算'],
+    },
+    {
+      name: 'OMS',
+      desc: '订单管理系统',
+      scm: ['公域拉单', 'Hold单', '履约拆合单'],
+      fms: ['预售收入', '销售收入'],
+    },
+    {
+      name: 'TMS',
+      desc: '物流管理系统',
+      scm: ['物流下单', '电子面单', '订阅轨迹', '物流跟踪'],
+      fms: ['物流费用', '平台预充值'],
+    },
+    {
+      name: 'WMS',
+      desc: '仓库管理系统',
+      scm: ['入库', '出库', '调拨', '盘点', '组装', '抽检'],
+      fms: ['仓库费用', '存货成本'],
+    },
+    {
+      name: 'FMS',
+      desc: '财务管理系统',
+      scm: ['预算管理', '流程管理', '会计分录', '日记账'],
+      fms: ['收入', '成本', '费用', '资产', '负债'],
+    },
+  ]);
+
+  const skills = ref<Skill[]>([
+    {
+      title: 'Java',
+      desc: '',
+      scale: 99,
+      uses: [
+        {
+          name: '支付系统',
+        },
+        {
+          name: '供应链系统',
+        },
+        {
+          name: '财务系统',
+        },
+      ],
+    },
+    {
+      title: 'Python',
+      desc: '',
+      scale: 99,
+      uses: [
+        {
+          name: '财务数据分析',
+        },
+        {
+          name: '爬虫',
+        },
+        {
+          name: 'AI训练',
+        },
+      ],
+    },
+    {
+      title: 'JavaScript',
+      desc: '',
+      scale: 99,
+      uses: [
+        {
+          name: '前端逆向',
+        },
+        {
+          name: '简单脚本',
+        },
+      ],
+    },
+    {
+      title: 'NodeJS',
+      desc: '',
+      scale: 99,
+      uses: [
+        {
+          name: 'IO System',
+        },
+        {
+          name: '爬虫脚本',
+        },
+        {
+          name: '跨平台B端软件',
+        },
+      ],
+    },
+    {
+      title: 'Vue/React',
+      desc: '',
+      scale: 99,
+      uses: [
+        {
+          name: 'Web系统',
+        },
+        {
+          name: '小程序',
+        },
+        {
+          name: 'Blog',
+        },
+      ],
+    },
+  ]);
+
+  onMounted(() => {
+    createObserver('.card');
+    ballAnimate();
+  });
+
+  onUnmounted(() => {
+    observer.value.disconnect();
+    observer.value = null;
+  });
+</script>
+
+<style scoped>
+  /* 针对WebKit浏览器（Chrome, Safari等） */
+  .custom-scrollbar::-webkit-scrollbar {
+    //display: none;
+    scroll-behavior: smooth;
+  }
+
+  #container {
+    background-image: radial-gradient(
+      circle farthest-corner at 100% 50%,
+      #d1d3d6,
+      #fcfcfd
+    );
+  }
+
+  #ball {
+    width: 25%;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    position: absolute;
+    top: 10vw;
+    left: 10vw;
+    display: block;
+    background-color: #ffffff;
+    box-shadow: inset 0 0 20px rgba(180, 177, 177, 0.5); /* 添加内部阴影以模拟3D效果 */
+    filter: blur(10px); /* 应用模糊滤镜 */
+    animation: float 3s ease-in-out infinite; /* 添加动画使球体浮动 */
+    transition:
+      top 1.5s,
+      left 1.5s; /* 平滑滚动 */
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      scale: 1;
+    }
+    50% {
+      scale: 1.2;
+    }
+  }
+
+  .pattern-dots-xl {
+    background-image: radial-gradient(currentColor 1px, transparent 1px);
+    background-size: calc(10 * 1px) calc(10 * 1px);
+  }
+
+  .section {
+    width: 100vw;
+    height: 100vh;
+    //backdrop-filter: blur(6px);
+    background-color: rgba(244, 243, 246, 0.05);
+    //background-image: radial-gradient(
+  //circle farthest-corner at 100% 50%,
+  //  #d1d3d6,
+  //  #fcfcfd
+  //);
+    //-webkit-backdrop-filter: blur(6px);
+    padding: 0 10vw;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    position: relative;
+  }
+
+  .section_title {
+    position: absolute;
+    top: 10vw;
+    left: 10vw;
+    z-index: 2;
+    font-size: 4rem;
+    opacity: 0.5;
+    transform: scale(0);
+  }
+
+  .section_title.visible {
+    opacity: 1;
+    transform: scale(1);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition:
+      color 0.3s linear,
+      opacity 0.3s linear,
+      transform 0.3s linear;
+  }
+
+  .card {
+    border-radius: 15px;
+    //background: white;
+    background: linear-gradient(to right bottom, #fcfcfd 20%, #f2f2f3 150%);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    padding: 0 15px;
+    //margin-top: 6px;
+    transform: translateY(100px) scale(0.95);
+    transition:
+      opacity 0.6s ease,
+      transform 0.3s ease;
+  }
+
+  .introduction {
+    height: 60vh;
+    display: flex;
+
+    .left {
+      padding: 35px;
+      flex: 0.7;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .right {
+      flex: 1;
+      position: relative;
+      padding: 35px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .bu {
+        width: 120%;
+        height: 90%;
+        border-radius: 15px;
+        background-color: #213547;
+        box-shadow:
+          0 3px 17px rgba(0, 0, 0, 0.035),
+          0 25px 141px rgba(0, 0, 0, 0.07);
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+
+  .card.visible::after {
+    content: 'x';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    scale: 0.1;
+    background-color: #213547;
+    border-radius: 15px;
+  }
+
+  .card.visible:hover::after {
+    scale: 1;
+    border-radius: 15px;
+    opacity: 0;
+    transition:
+      opacity 0.6s ease-out,
+      border-radius 0.8s ease-out;
+  }
+
+  .card.visible:hover {
+    transform: translateY(-5px);
+    box-shadow:
+      0px 3.1px 17.7px rgba(0, 0, 0, 0.035),
+      0px 25px 141px rgba(0, 0, 0, 0.07);
+    transition:
+      box-shadow 0.2s linear,
+      transform 0.2s linear;
+  }
+
+  .card.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .text-blurry {
+    text-align: center;
+    color: transparent;
+    animation: blurAnimation 2s forwards; /* 添加动画 */
+  }
+
+  /* 定义模糊动画 */
+  @keyframes blurAnimation {
+    0% {
+      text-shadow: 0 0 0 rgba(0, 0, 0, 0.5); /* 开始时没有模糊 */
+    }
+    100% {
+      text-shadow:
+        0 0 5px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(0, 0, 0, 0.3); /* 结束时增加模糊效果 */
+    }
+  }
+
+  .small_card {
+    padding: 15px;
+    width: 100%;
+    box-shadow:
+      0 3px 17px rgba(0, 0, 0, 0.035),
+      0 25px 141px rgba(0, 0, 0, 0.07);
+  }
+
+  .fms_table {
+    height: 100%;
+    border-radius: 15px;
+    border: white 5px solid;
+    text-align: center;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    perspective: 1000px; /* 为父元素添加透视效果 */
+  }
+
+  .fms_table:nth-child(1) {
+    background: #d6de51;
+    //background-image: url('https://img.springlearn.cn/blog/744156a16dfbb0a090a0fa3548984b2c.png');
+    //background-position: top center;
+  }
+
+  .fms_table:nth-child(2) {
+    background: #ffc93c;
+    //background-image: url('https://img.springlearn.cn/blog/5d621a7e166576de3a354c576e3691ea.png');
+    //background-position: top center;
+  }
+
+  .fms_table:nth-child(3) {
+    background: #ff9a3c;
+    //background-image: url('https://img.springlearn.cn/blog/441482c8abb85b105133140a650968b9.png');
+    //background-position: top center;
+  }
+
+  .fms_table_title {
+    font-size: 3rem;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) translateZ(20px); /* 旋转子元素 */
+    text-shadow: 0 3px 17px rgba(0, 0, 0, 0.035);
+  }
+
+  .finance {
+  }
+</style>

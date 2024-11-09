@@ -17,7 +17,7 @@ export default defineConfig({
     //压缩
     minify: false,
     rollupOptions: {
-      //忽略打包vue文件
+      // 确保外部化处理那些你不想打包进库的依赖
       external: ['vue'],
       //input: ["index.ts"],
       output: [

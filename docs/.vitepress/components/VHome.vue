@@ -1,5 +1,5 @@
 <template>
-  <div id="container">
+  <div id="container" v-if="true">
     <div style="position: relative;">
       <div class="blades" style="opacity: 0;scale: 1;left: 70px;z-index: 1000">
         <div class="blade"></div>
@@ -10,6 +10,7 @@
         <div class="blade"></div>
       </div>
     </div>
+    <PeopleTimeEchart style="width: 45vw;aspect-ratio: 1"/>
     <div
       style="width: 100vw;height: 25vh;text-align: center;margin-top: 2rem;display: flex;flex-direction: column; justify-content: center;align-items: center">
       <div class="item" style="font-size: 0"> {{ textRef }}</div>
@@ -26,14 +27,13 @@
   import anime from 'animejs';
   import Letterize from './letterize.cjs';
   import Sphere from './Sphere.vue';
+  import PeopleTimeEchart from "./PeopleTimeEchart.vue";
 
   const textRef = ref('Hello SCM !');
-
 
   const run = ref();
 
   const gushici = ref('  ');
-
 
   const loadGushici = () => {
     var xhr = new XMLHttpRequest();
@@ -60,7 +60,7 @@
     let tl = anime.timeline({
       targets: letterize.listAll,
       autoplay: false,
-      zIndex: 100,
+      zIndex: 2,
       width: '100vw',
       easing: 'easeInOutExpo',
     });
@@ -75,24 +75,15 @@
       delay: anime.stagger(200),
     }, '-=1800');
 
-    // 风车放大
-    // tl.add({
-    //   targets: '.blades',
-    //   opacity: 1,
-    //   scale: [0, 1],
-    //   easing: 'spring',
-    //   duration: 1000,
-    //   delay: anime.stagger(1),
-    // });
-
-
     tl.finished.then(() => {
+      // 球形展示
       const n = anime({
         targets: '.sphere',
         opacity: 0.7,
         duration: 1000,
         easing: 'linear',
       });
+      // 风车放大
       const s = anime({
         targets: '.blades',
         opacity: 1,
@@ -104,6 +95,7 @@
         },
       });
       n.finished.then(() => {
+        // 风车旋转
         run.value = anime({
           targets: '.blades',
           rotate: 360,
@@ -123,12 +115,6 @@
   onMounted(() => {
     customAnimationRef.value = customAnimation();
     customAnimationRef.value.play();
-    // VanillaTilt.init(document.querySelector('.sphere') as HTMLElement, {
-    //   max: 5,
-    //   speed: 100,
-    // });
-
-
   });
 
   const uninstall = () => {
@@ -143,6 +129,9 @@
     uninstall();
   });
 
+  //.sphere
+  //box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
+  //-webkit-box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
 </script>
 
 <style scoped>
@@ -152,11 +141,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden
+    height: 100vh;
+    //background-color: white;
+    background-image: radial-gradient(
+        circle farthest-corner at 100% 50%,
+        #d1d3d6,
+        #fcfcfd
+    );
   }
 
   .item {
-    z-index: 100;
+    z-index: 2;
   }
 
   .btnWrapper {
@@ -176,8 +171,6 @@
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
-    -webkit-box-shadow: rgba(142, 142, 142, 0.19) 0px 6px 15px 0px;
     border-radius: 12px;
     -webkit-border-radius: 12px;
     color: rgba(255, 255, 255, 0.75);
@@ -242,9 +235,7 @@
     font-weight: 300; /* 使用较细的字体重量 */
     background: linear-gradient(
       to right,
-      #2c3e50,  /* 深蓝灰色 */
-      #34495e,  /* 中蓝灰色 */
-      #5D6D7E   /* 浅蓝灰色 */
+      #2c3e50, /* 深蓝灰色 */ #34495e, /* 中蓝灰色 */ #5D6D7E /* 浅蓝灰色 */
     );
     background-size: 200% auto;
     color: transparent;
@@ -265,4 +256,5 @@
       background-position: 0% 50%;
     }
   }
+
 </style>

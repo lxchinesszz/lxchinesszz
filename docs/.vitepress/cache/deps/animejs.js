@@ -1,4 +1,4 @@
-import "./chunk-PZ5AY32C.js";
+import "./chunk-G3PMV62Z.js";
 
 // node_modules/.pnpm/animejs@3.2.2/node_modules/animejs/lib/anime.es.js
 var defaultInstanceSettings = {

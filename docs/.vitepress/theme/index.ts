@@ -4,7 +4,7 @@ import 'vitepress-theme-demoblock/dist/theme/styles/index.css';
 import type { EnhanceAppContext } from 'vitepress/dist/client';
 import { useComponents } from './useComponents';
 import './style.css';
-// import './custom.css'
+import './custom.css';
 
 export default {
   ...DefaultTheme,
@@ -15,9 +15,7 @@ export default {
   },
 };
 
-
 // 以上述配置开始观察目标节点
-
 
 // window.onload = function() {
 //

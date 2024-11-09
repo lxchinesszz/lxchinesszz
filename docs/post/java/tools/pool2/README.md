@@ -13,6 +13,7 @@ footer: true
 backtotop: true
 sidebarDepth: 3
 title: apache-commons 池化技术
+category: '池化技术'
 password: 123
 ---
 

@@ -19,7 +19,7 @@
       rotate: () => anime.random(-360, 360),
       translateY: () => anime.random(-150, 150),
       translateX: () => anime.random(-150, 150),
-      delay: anime.stagger(100, { grid: [30, 30], from: '1' }),
+      delay: anime.stagger(100, { grid: [30, 30], from: 'first' }),
       keyframes:[{
         background: '#f00'
       },{
@@ -66,7 +66,7 @@
       rotate: () => anime.random(0, 0),
       translateY: () => anime.random(0, 0),
       translateX: () => anime.random(0, 0),
-      delay: anime.stagger(100, { grid: [30, 30], from: '1' }),
+      delay: anime.stagger(100, { grid: [30, 30], from: 'first' }),
       keyframes:[{
         background: '#fff'
       },{

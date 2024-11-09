@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background-color: #f0f0f0;
+      }
+
+      .card {
+          width: 300px;
+          height: 200px;
+          border-radius: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: white;
+          position: relative;
+          box-shadow: 0 10px 40px rgba(255, 106, 0, 0.5);
+          animation: boxShadowChange 5s infinite;
+          border: 5px solid;
+          border-image-slice: 1;
+          border-image-source: linear-gradient(90deg, #ff6a00, #ee0979);
+          animation: borderMove 5s infinite linear;
+      }
+
+      .gradient-text {
+          font-size: 30px;
+          font-weight: bold;
+          background: linear-gradient(90deg, #ff6a00, #ee0979);
+          background-clip: text;
+          -webkit-background-clip: text; /* 兼容 WebKit 浏览器 */
+          color: transparent;
+          -webkit-text-fill-color: transparent; /* 确保文字透明以显示背景 */
+          animation: gradientTextChange 5s infinite;
+          background-size: 200%; /* 调整背景大小确保渐变展示 */
+      }
+
+      /* 文字渐变的动态变化 */
+      @keyframes gradientTextChange {
+          0% {
+              background-position: 0% 50%;
+          }
+          50% {
+              background-position: 100% 50%;
+          }
+          100% {
+              background-position: 0% 50%;
+          }
+      }
+
+      /* 边框的动态移动效果 */
+      @keyframes borderMove {
+          0% {
+              border-image-source: linear-gradient(90deg, #ff6a00, #ee0979);
+          }
+          50% {
+              border-image-source: linear-gradient(90deg, #00c6ff, #0072ff);
+          }
+          100% {
+              border-image-source: linear-gradient(90deg, #ff6a00, #ee0979);
+          }
+      }
+
+      /* box-shadow 颜色动态变化 */
+      @keyframes boxShadowChange {
+          0% {
+              box-shadow: 20px 100px 20px rgba(255, 106, 0, 0.5);
+          }
+          50% {
+              box-shadow: 0 100px 20px rgba(0, 198, 255, 0.5);
+          }
+          100% {
+              box-shadow: 0 100px 20px rgba(255, 106, 0, 0.5);
+          }
+      }
+  </style>
+  <title>Dynamic Gradient Card</title>
+</head>
+<body>
+
+<div class="card">
+  <h1 class="gradient-text">动态标题</h1>
+</div>
+
+</body>
+</html>
