@@ -4,9 +4,9 @@
       class="blog_img"
       :style="{ backgroundImage: 'url(' + img + ')' }"
     ></div>
-    <div class="blog_title">
+    <div class="blog_title" @click="gotoNav(link)">
       <a-typography-title :heading="6">
-        <a :href="link"> {{ title }} </a>
+        {{ title }}
       </a-typography-title>
     </div>
     <div class="blog_desc">
@@ -20,7 +20,7 @@
   </a-grid-item>
 </template>
 
-<script setup>
+<script setup lang="ts">
   defineProps({
     img: {
       type: String,
@@ -39,6 +39,10 @@
       default: '',
     },
   });
+
+  const gotoNav = (link: string) => {
+    window.open(link, '_blank');
+  };
 </script>
 
 <style scoped lang="less">
@@ -61,6 +65,7 @@
     .blog_title {
       padding: 0 15px;
       height: 10%;
+      cursor: pointer;
     }
 
     .blog_desc {

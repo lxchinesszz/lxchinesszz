@@ -13,19 +13,19 @@
     >
       <span class="auto-color-text"> {{ title }}</span>
     </div>
-    <div class="category">
-      <a :href="link">
-        {{ title }}
-      </a>
+    <div class="category" @click="gotoNav(link)">
+      {{ title }}
     </div>
     <div class="heading">
       {{ desc }}
-      <div class="author">By <span class="name">Abi</span> 4 days ago</div>
+      <div class="author">
+        By <span class="name">西魏陶渊明</span> 1 year ago
+      </div>
     </div>
   </a-grid-item>
 </template>
 
-<script setup>
+<script setup lang="ts">
   const props = defineProps({
     index: {
       type: Number,
@@ -55,6 +55,10 @@
     ['#4285f4', '#7aadff'],
     ['#ff9500', '#ffc266'],
   ];
+
+  const gotoNav = (link: string) => {
+    window.open(link, '_blank');
+  };
 </script>
 
 <style scoped lang="less">
@@ -69,6 +73,7 @@
     position: relative;
     z-index: 0;
     transition: all 0.3s ease; /* 添加渐变过渡效果 */
+    cursor: pointer;
   }
 
   .card12:hover {
@@ -162,7 +167,7 @@
 
   .category {
     text-transform: uppercase;
-    font-size: 0.7em;
+    font-size: 1.2rem;
     font-weight: 600;
     color: rgb(63, 121, 230);
     padding: 10px 7px 0;

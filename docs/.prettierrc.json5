@@ -1,0 +1,35 @@
+{
+  // 箭头函数的参数总是用圆括号括起来。
+  "arrowParens": "always",
+  "bracketSameLine": false,
+  // 大括号内添加空格
+  "bracketSpacing": true,
+  // 语句末尾添加分号。
+  "semi": true,
+  "experimentalTernaries": false,
+  //  使用单引号而非双引号。
+  "singleQuote": true,
+  // JSX 中使用双引号
+  "jsxSingleQuote": false,
+  // 只有在必要时才用引号包围对象属性名
+  "quoteProps": "as-needed",
+  // 在所有可能的地方添加尾随逗号
+  "trailingComma": "all",
+  // JSX 中每个属性不强制放在单独一行
+  "singleAttributePerLine": false,
+  // HTML 中的空白字符敏感度，基于 CSS 规则
+  "htmlWhitespaceSensitivity": "css",
+  // 在 Vue 文件中缩进脚本和样式标签。
+  "vueIndentScriptAndStyle": true,
+  "proseWrap": "preserve",
+  "insertPragma": false,
+  // 每行的最大字符数（默认 80）。
+  "printWidth": 80,
+  "requirePragma": false,
+  // 缩进使用 2 个空格宽度。
+  "tabWidth": 2,
+  // 使用空格而非制表符进行缩进。
+  "useTabs": false,
+  // 自动格式化嵌入的语言
+  "embeddedLanguageFormatting": "auto"
+}

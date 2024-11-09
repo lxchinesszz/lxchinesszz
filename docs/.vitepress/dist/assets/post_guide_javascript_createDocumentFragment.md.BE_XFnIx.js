@@ -1,0 +1,17 @@
+import{_ as s,o as a,c as e,a4 as p}from"./chunks/framework.B8fosacB.js";const u=JSON.parse('{"title":"createDocumentFragment","description":"","frontmatter":{"title":"createDocumentFragment","editLink":true,"navbar":true,"category":"JavaScript"},"headers":[],"relativePath":"post/guide/javascript/createDocumentFragment.md","filePath":"post/guide/javascript/createDocumentFragment.md","lastUpdated":1726845244000}'),l={name:"post/guide/javascript/createDocumentFragment.md"};function t(r,n,i,c,m,o){return a(),e("div",{"data-pagefind-body":!0},n[0]||(n[0]=[p(`<div class="tip custom-block"><p class="custom-block-title">TIP</p><p>核心本质: createDocumentFragment 将 dom 操作批量进行操作</p></div><p>如下代码片段，循环往 document 里面添加元素</p><div class="language- vp-adaptive-theme line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span>let element  = document.getElementById(&#39;ul&#39;);</span></span>
+<span class="line"><span>let eles = document.getElementByIds(&#39;li&#39;);</span></span>
+<span class="line"><span>for (var i = eles.length - 1; i &gt;= 0; i--) {</span></span>
+<span class="line"><span>    element.appendChild(eles[i]);</span></span>
+<span class="line"><span>}</span></span></code></pre><div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>先创建一个 Fragment 片段，js 在内存中先把对象创建好，然后一次往 document 中进行插入。</p><div class="language- vp-adaptive-theme line-numbers-mode"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code"><code><span class="line"><span>let element  = document.getElementById(&#39;ul&#39;);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>let fragment = document.createDocumentFragment();</span></span>
+<span class="line"><span>let browsers = [&#39;Firefox&#39;, &#39;Chrome&#39;, &#39;Opera&#39;, </span></span>
+<span class="line"><span>    &#39;Safari&#39;, &#39;Internet Explorer&#39;];</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>browsers.forEach((browser) =&gt; {</span></span>
+<span class="line"><span>    let li = document.createElement(&#39;li&#39;);</span></span>
+<span class="line"><span>    li.textContent = browser;</span></span>
+<span class="line"><span>    // 此处往文档片段插入子节点，不会引起回流 （相当于打包操作）</span></span>
+<span class="line"><span>    fragment.appendChild(li);</span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span>element.appendChild(fragment); // 将打包好的文档片段插入ul节点，只做了一次操作</span></span></code></pre><div class="line-numbers-wrapper" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div>`,5)]))}const b=s(l,[["render",t]]);export{u as __pageData,b as default};

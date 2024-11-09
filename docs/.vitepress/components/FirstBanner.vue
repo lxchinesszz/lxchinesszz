@@ -1,6 +1,6 @@
 <template>
   <div class="big_home">
-    <div class="logo">个人博客站</div>
+    <div class="logo" style="cursor: pointer" @click="gotoNav('https://java.springlearn.cn')">个人博客站</div>
     <div class="home" style="">
       <div
         class="move"
@@ -46,8 +46,7 @@
             活跃媒体平台
           </a-space>
           <a-space>
-            <BannerBtn4 />
-            <BannerBtn4 title="知识库" />
+            <BannerBtn4 @click="gotoNav('/post/java/')"/>
           </a-space>
         </a-space>
       </div>
